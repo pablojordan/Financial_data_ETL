@@ -1,1 +1,0 @@
-user_pass = 'postgres:Gatech06'
