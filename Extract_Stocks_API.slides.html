@@ -13266,18 +13266,15 @@ a.anchor-link {
 </ol>
 <ol>
 <li><p>Data Extraction</p>
-<p>2.1. Fortune 500 Companies Table\
- 2.2. Daily stocks information for Fortune 500 Companies\
- 2.3. Pre-selection of Financial Services Companies in Insurance Industry</p>
+<p>2.1. Fortune 500 Companies Table</p>
+<p>2.2. Daily stocks information for Fortune 500 Companies</p>
+<p>2.3. Pre-selection of Financial Services Companies in Insurance Industry</p>
 
-<pre><code> 2.3.1 Data Extraction
+<pre><code> * Historical Stocks Data 
 
-    2.3.1.1. Historical Stocks Data for pre-selected Financial Services Companies
-             in Insurance Industry
+ * Daily news 
 
-    2.3.1.2. Daily news of pre-selected Financial Services Companies in Insurance Industry
-
-    2.3.1.3. Last 4 Quaters Financial Statements </code></pre>
+ * Last 4 Financial Statements </code></pre>
 </li>
 </ol>
 
@@ -13288,7 +13285,7 @@ a.anchor-link {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><h1>Table of Contents<span class="tocSkip"></span></h1></p>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Financial-Data-Extraction" data-toc-modified-id="Financial-Data-Extraction-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Financial Data Extraction</a></span></li><li><span><a href="#Dependencies" data-toc-modified-id="Dependencies-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Dependencies</a></span></li><li><span><a href="#Scrape/Extract-Fortune-500-Table" data-toc-modified-id="Scrape/Extract-Fortune-500-Table-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Scrape/Extract Fortune 500 Table</a></span><ul class="toc-item"><li><span><a href="#Type-of-Data-&amp;-Convert-to-DataFrame" data-toc-modified-id="Type-of-Data-&amp;-Convert-to-DataFrame-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>Type of Data &amp; Convert to DataFrame</a></span></li><li><span><a href="#Make-symbols-to-list" data-toc-modified-id="Make-symbols-to-list-3.2"><span class="toc-item-num">3.2&nbsp;&nbsp;</span>Make symbols to list</a></span></li></ul></li><li><span><a href="#Extract-Daily-Stocks-Data-for-fortune-500" data-toc-modified-id="Extract-Daily-Stocks-Data-for-fortune-500-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Extract Daily Stocks Data for fortune 500</a></span><ul class="toc-item"><li><span><a href="#Display-Data-Output" data-toc-modified-id="Display-Data-Output-4.1"><span class="toc-item-num">4.1&nbsp;&nbsp;</span>Display Data Output</a></span></li><li><span><a href="#Convert-data-to-Data-Frame-and-save-in-CSV-&amp;-JSON" data-toc-modified-id="Convert-data-to-Data-Frame-and-save-in-CSV-&amp;-JSON-4.2"><span class="toc-item-num">4.2&nbsp;&nbsp;</span>Convert data to Data Frame and save in CSV &amp; JSON</a></span></li></ul></li><li><span><a href="#Extract-Historical-Stocks-Data" data-toc-modified-id="Extract-Historical-Stocks-Data-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>Extract Historical Stocks Data</a></span><ul class="toc-item"><li><span><a href="#Stocks-Price-&amp;-Dividend---Financial-Services---Insurance" data-toc-modified-id="Stocks-Price-&amp;-Dividend---Financial-Services---Insurance-5.1"><span class="toc-item-num">5.1&nbsp;&nbsp;</span>Stocks Price &amp; Dividend - Financial Services - Insurance</a></span></li><li><span><a href="#View-Output-Data-&amp;-Create-Data-Frame" data-toc-modified-id="View-Output-Data-&amp;-Create-Data-Frame-5.2"><span class="toc-item-num">5.2&nbsp;&nbsp;</span>View Output Data &amp; Create Data Frame</a></span></li><li><span><a href="#Save-data-to-CSV-&amp;-JSON" data-toc-modified-id="Save-data-to-CSV-&amp;-JSON-5.3"><span class="toc-item-num">5.3&nbsp;&nbsp;</span>Save data to CSV &amp; JSON</a></span></li></ul></li><li><span><a href="#Extract-News-Stock-Data---Financial-Services---Insurance" data-toc-modified-id="Extract-News-Stock-Data---Financial-Services---Insurance-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>Extract News Stock Data - Financial Services - Insurance</a></span><ul class="toc-item"><li><span><a href="#Daily-News-Stocks---Financial-Services---Insurance" data-toc-modified-id="Daily-News-Stocks---Financial-Services---Insurance-6.1"><span class="toc-item-num">6.1&nbsp;&nbsp;</span>Daily News Stocks - Financial Services - Insurance</a></span></li><li><span><a href="#Print-output-data-and-check-length-of-extracted-information" data-toc-modified-id="Print-output-data-and-check-length-of-extracted-information-6.2"><span class="toc-item-num">6.2&nbsp;&nbsp;</span>Print output data and check length of extracted information</a></span></li><li><span><a href="#Loop-to-obtain-only-the-key-data" data-toc-modified-id="Loop-to-obtain-only-the-key-data-6.3"><span class="toc-item-num">6.3&nbsp;&nbsp;</span>Loop to obtain only the key data</a></span></li><li><span><a href="#Looping,-append-and-create-a-Data-Frame" data-toc-modified-id="Looping,-append-and-create-a-Data-Frame-6.4"><span class="toc-item-num">6.4&nbsp;&nbsp;</span>Looping, append and create a Data Frame</a></span></li><li><span><a href="#Visualize-all-output-data" data-toc-modified-id="Visualize-all-output-data-6.5"><span class="toc-item-num">6.5&nbsp;&nbsp;</span>Visualize all output data</a></span></li><li><span><a href="#Save-data-to-CSV-&amp;-JSON" data-toc-modified-id="Save-data-to-CSV-&amp;-JSON-6.6"><span class="toc-item-num">6.6&nbsp;&nbsp;</span>Save data to CSV &amp; JSON</a></span></li></ul></li><li><span><a href="#Extracting-Financial-Statements" data-toc-modified-id="Extracting-Financial-Statements-7"><span class="toc-item-num">7&nbsp;&nbsp;</span>Extracting Financial Statements</a></span><ul class="toc-item"><li><span><a href="#Financial-Statements---Last-4-Quarters" data-toc-modified-id="Financial-Statements---Last-4-Quarters-7.1"><span class="toc-item-num">7.1&nbsp;&nbsp;</span>Financial Statements - Last 4 Quarters</a></span></li><li><span><a href="#Display-output-data" data-toc-modified-id="Display-output-data-7.2"><span class="toc-item-num">7.2&nbsp;&nbsp;</span>Display output data</a></span></li><li><span><a href="#Convert-dict-to-DataFrame-list" data-toc-modified-id="Convert-dict-to-DataFrame-list-7.3"><span class="toc-item-num">7.3&nbsp;&nbsp;</span>Convert dict to DataFrame list</a></span></li><li><span><a href="#Concatenante-Data-for-each-financial-Statements" data-toc-modified-id="Concatenante-Data-for-each-financial-Statements-7.4"><span class="toc-item-num">7.4&nbsp;&nbsp;</span>Concatenante Data for each financial Statements</a></span></li><li><span><a href="#Display-Data-Frame-Results" data-toc-modified-id="Display-Data-Frame-Results-7.5"><span class="toc-item-num">7.5&nbsp;&nbsp;</span>Display Data Frame Results</a></span></li><li><span><a href="#Save-data-to-CSV" data-toc-modified-id="Save-data-to-CSV-7.6"><span class="toc-item-num">7.6&nbsp;&nbsp;</span>Save data to CSV</a></span></li></ul></li></ul></div>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Financial-Data-Extraction" data-toc-modified-id="Financial-Data-Extraction-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Financial Data Extraction</a></span></li><li><span><a href="#Dependencies" data-toc-modified-id="Dependencies-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Dependencies</a></span></li><li><span><a href="#Scrape/Extract-Fortune-500-Table" data-toc-modified-id="Scrape/Extract-Fortune-500-Table-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Scrape/Extract Fortune 500 Table</a></span><ul class="toc-item"><li><span><a href="#Type-of-Data-&amp;-Convert-to-DataFrame" data-toc-modified-id="Type-of-Data-&amp;-Convert-to-DataFrame-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>Type of Data &amp; Convert to DataFrame</a></span></li><li><span><a href="#Make-symbols-to-list" data-toc-modified-id="Make-symbols-to-list-3.2"><span class="toc-item-num">3.2&nbsp;&nbsp;</span>Make symbols to list</a></span></li></ul></li><li><span><a href="#Extract-Daily-Stocks-Data-for-fortune-500" data-toc-modified-id="Extract-Daily-Stocks-Data-for-fortune-500-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Extract Daily Stocks Data for fortune 500</a></span><ul class="toc-item"><li><span><a href="#Display-Data-Output" data-toc-modified-id="Display-Data-Output-4.1"><span class="toc-item-num">4.1&nbsp;&nbsp;</span>Display Data Output</a></span></li><li><span><a href="#Convert-data-to-Data-Frame-and-save-in-CSV-&amp;-JSON" data-toc-modified-id="Convert-data-to-Data-Frame-and-save-in-CSV-&amp;-JSON-4.2"><span class="toc-item-num">4.2&nbsp;&nbsp;</span>Convert data to Data Frame and save in CSV &amp; JSON</a></span></li></ul></li><li><span><a href="#Extract-Historical-Stocks-Data" data-toc-modified-id="Extract-Historical-Stocks-Data-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>Extract Historical Stocks Data</a></span><ul class="toc-item"><li><span><a href="#Stocks-Price-&amp;-Dividend---Financial-Services---Insurance" data-toc-modified-id="Stocks-Price-&amp;-Dividend---Financial-Services---Insurance-5.1"><span class="toc-item-num">5.1&nbsp;&nbsp;</span>Stocks Price &amp; Dividend - Financial Services - Insurance</a></span></li><li><span><a href="#View-Output-Data-&amp;-Create-Data-Frame" data-toc-modified-id="View-Output-Data-&amp;-Create-Data-Frame-5.2"><span class="toc-item-num">5.2&nbsp;&nbsp;</span>View Output Data &amp; Create Data Frame</a></span></li><li><span><a href="#Save-data-to-CSV-&amp;-JSON" data-toc-modified-id="Save-data-to-CSV-&amp;-JSON-5.3"><span class="toc-item-num">5.3&nbsp;&nbsp;</span>Save data to CSV &amp; JSON</a></span></li></ul></li><li><span><a href="#Extract-News-Stock-Data---Financial-Services---Insurance" data-toc-modified-id="Extract-News-Stock-Data---Financial-Services---Insurance-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>Extract News Stock Data - Financial Services - Insurance</a></span><ul class="toc-item"><li><span><a href="#Daily-News-Stocks---Financial-Services---Insurance" data-toc-modified-id="Daily-News-Stocks---Financial-Services---Insurance-6.1"><span class="toc-item-num">6.1&nbsp;&nbsp;</span>Daily News Stocks - Financial Services - Insurance</a></span></li><li><span><a href="#Print-output-data-and-check-length-of-extracted-information" data-toc-modified-id="Print-output-data-and-check-length-of-extracted-information-6.2"><span class="toc-item-num">6.2&nbsp;&nbsp;</span>Print output data and check length of extracted information</a></span></li><li><span><a href="#Loop-to-obtain-only-the-key-data" data-toc-modified-id="Loop-to-obtain-only-the-key-data-6.3"><span class="toc-item-num">6.3&nbsp;&nbsp;</span>Loop to obtain only the key data</a></span></li><li><span><a href="#Looping,-append-and-create-a-Data-Frame" data-toc-modified-id="Looping,-append-and-create-a-Data-Frame-6.4"><span class="toc-item-num">6.4&nbsp;&nbsp;</span>Looping, append and create a Data Frame</a></span></li><li><span><a href="#Visualize-all-output-data" data-toc-modified-id="Visualize-all-output-data-6.5"><span class="toc-item-num">6.5&nbsp;&nbsp;</span>Visualize all output data</a></span></li><li><span><a href="#Save-data-to-CSV-&amp;-JSON" data-toc-modified-id="Save-data-to-CSV-&amp;-JSON-6.6"><span class="toc-item-num">6.6&nbsp;&nbsp;</span>Save data to CSV &amp; JSON</a></span></li></ul></li><li><span><a href="#Extracting-Financial-Statements" data-toc-modified-id="Extracting-Financial-Statements-7"><span class="toc-item-num">7&nbsp;&nbsp;</span>Extracting Financial Statements</a></span><ul class="toc-item"><li><span><a href="#Financial-Statements---Last-4-Quarters" data-toc-modified-id="Financial-Statements---Last-4-Quarters-7.1"><span class="toc-item-num">7.1&nbsp;&nbsp;</span>Financial Statements - Last 4 Quarters</a></span></li><li><span><a href="#Display-output-data" data-toc-modified-id="Display-output-data-7.2"><span class="toc-item-num">7.2&nbsp;&nbsp;</span>Display output data</a></span></li><li><span><a href="#Convert-dict-to-DataFrame-list" data-toc-modified-id="Convert-dict-to-DataFrame-list-7.3"><span class="toc-item-num">7.3&nbsp;&nbsp;</span>Convert dict to DataFrame list</a></span></li><li><span><a href="#Concatenante-Data-for-each-financial-Statements" data-toc-modified-id="Concatenante-Data-for-each-financial-Statements-7.4"><span class="toc-item-num">7.4&nbsp;&nbsp;</span>Concatenante Data for each financial Statements</a></span></li><li><span><a href="#Display-Data-Frame-Results" data-toc-modified-id="Display-Data-Frame-Results-7.5"><span class="toc-item-num">7.5&nbsp;&nbsp;</span>Display Data Frame Results</a></span></li><li><span><a href="#Save-data-to-CSV" data-toc-modified-id="Save-data-to-CSV-7.6"><span class="toc-item-num">7.6&nbsp;&nbsp;</span>Save data to CSV</a></span></li></ul></li><li><span><a href="#Questions" data-toc-modified-id="Questions-8"><span class="toc-item-num">8&nbsp;&nbsp;</span>Questions</a></span></li></ul></div>
 </div>
 </div>
 </div></section></section><section><section>
@@ -14209,10 +14206,10 @@ a.anchor-link {
 
  
  
-<div id="8e9fe788-8057-495a-898c-e5a8d9490e95"></div>
+<div id="1586a1cb-2b18-4470-9c35-2cae4ac008d6"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#8e9fe788-8057-495a-898c-e5a8d9490e95');
+var element = $('#1586a1cb-2b18-4470-9c35-2cae4ac008d6');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "5ff0591be31841c79fa0b76e9981a5b4", "version_major": 2, "version_minor": 0}
@@ -36631,10 +36628,10 @@ Data Acquisition Complete
 
  
  
-<div id="de060368-7ab0-4b9d-90c4-f3f949d5a093"></div>
+<div id="9caabeb1-7582-4191-8694-20032964558f"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#de060368-7ab0-4b9d-90c4-f3f949d5a093');
+var element = $('#9caabeb1-7582-4191-8694-20032964558f');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "8714d2f8ac7e4707a5e24fb816892a68", "version_major": 2, "version_minor": 0}
@@ -44312,10 +44309,10 @@ NotebookApp.rate_limit_window=3.0 (secs)
 
  
  
-<div id="b0a55075-342f-4a34-a328-b23ba0b6e84c"></div>
+<div id="3269cb3f-b9f2-422f-9eec-7fdba0ddf5f0"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#b0a55075-342f-4a34-a328-b23ba0b6e84c');
+var element = $('#3269cb3f-b9f2-422f-9eec-7fdba0ddf5f0');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "abd6c8d9277f4315a8b23e72163a0415", "version_major": 2, "version_minor": 0}
@@ -53481,7 +53478,7 @@ Data Acquisition Complete
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Yahoo Finance API for Financials Statements</span>
@@ -53578,13 +53575,13 @@ Data Acquisition Complete
 
  
  
-<div id="2a561b50-6170-41a7-8d10-6261fc27d276"></div>
+<div id="6f65f12f-edd9-4c01-8c35-4aade4f1790b"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#2a561b50-6170-41a7-8d10-6261fc27d276');
+var element = $('#6f65f12f-edd9-4c01-8c35-4aade4f1790b');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "a9402e891891426492ecbc63a087fcec", "version_major": 2, "version_minor": 0}
+{"model_id": "17b3d4b8f8d048d599b8dc3930b0abdf", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -53596,26 +53593,26 @@ var element = $('#2a561b50-6170-41a7-8d10-6261fc27d276');
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Stock not found...!!
-Data Acquisition 1 | Stock Symbol : AFL
-Data Acquisition 2 | Stock Symbol : ALL
-Data Acquisition 3 | Stock Symbol : AON
-Data Acquisition 4 | Stock Symbol : AJG
-Data Acquisition 5 | Stock Symbol : CB
-Data Acquisition 6 | Stock Symbol : CINF
-Data Acquisition 7 | Stock Symbol : RE
-Data Acquisition 8 | Stock Symbol : GL
-Data Acquisition 9 | Stock Symbol : HIG
-Data Acquisition 10 | Stock Symbol : MMC
-Data Acquisition 11 | Stock Symbol : MET
-Data Acquisition 12 | Stock Symbol : PFG
-Data Acquisition 13 | Stock Symbol : PGR
-Data Acquisition 14 | Stock Symbol : PRU
-Data Acquisition 15 | Stock Symbol : TRV
-Data Acquisition 16 | Stock Symbol : UNM
-Data Acquisition 17 | Stock Symbol : WLTW
-Data Acquisition 18 | Stock Symbol : LNC
-Data Acquisition 19 | Stock Symbol : L
+<pre>Data Acquisition 1 | Stock Symbol : AIG
+Data Acquisition 2 | Stock Symbol : AFL
+Data Acquisition 3 | Stock Symbol : ALL
+Data Acquisition 4 | Stock Symbol : AON
+Data Acquisition 5 | Stock Symbol : AJG
+Data Acquisition 6 | Stock Symbol : CB
+Data Acquisition 7 | Stock Symbol : CINF
+Data Acquisition 8 | Stock Symbol : RE
+Data Acquisition 9 | Stock Symbol : GL
+Data Acquisition 10 | Stock Symbol : HIG
+Data Acquisition 11 | Stock Symbol : MMC
+Data Acquisition 12 | Stock Symbol : MET
+Data Acquisition 13 | Stock Symbol : PFG
+Data Acquisition 14 | Stock Symbol : PGR
+Data Acquisition 15 | Stock Symbol : PRU
+Data Acquisition 16 | Stock Symbol : TRV
+Data Acquisition 17 | Stock Symbol : UNM
+Data Acquisition 18 | Stock Symbol : WLTW
+Data Acquisition 19 | Stock Symbol : LNC
+Data Acquisition 20 | Stock Symbol : L
 
 ------------&amp;&amp;&amp;&amp;---------------
 Data Acquisition Complete
@@ -53637,7 +53634,7 @@ Data Acquisition Complete
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Display output data</span>
@@ -53661,9 +53658,9 @@ Data Acquisition Complete
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>76
-76
-76
+<pre>80
+80
+80
 </pre>
 </div>
 </div>
@@ -53681,7 +53678,7 @@ Data Acquisition Complete
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">balance_list</span> <span class="o">=</span> <span class="p">[]</span>
@@ -53714,7 +53711,7 @@ Data Acquisition Complete
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Cancatenate all data per quater for balance sheets, cashflow and income statements</span>
@@ -53741,7 +53738,7 @@ Data Acquisition Complete
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Display data results</span>
@@ -53761,7 +53758,7 @@ Data Acquisition Complete
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[22]:</div>
+    <div class="prompt output_prompt">Out[30]:</div>
 
 
 
@@ -53784,147 +53781,147 @@ Data Acquisition Complete
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>investments</th>
+      <th>maxAge</th>
+      <th>endDate</th>
+      <th>netIncome</th>
       <th>changeToLiabilities</th>
+      <th>symbol</th>
+      <th>investments</th>
       <th>totalCashflowsFromInvestingActivities</th>
       <th>netBorrowings</th>
       <th>totalCashFromFinancingActivities</th>
       <th>changeToOperatingActivities</th>
-      <th>issuanceOfStock</th>
-      <th>netIncome</th>
-      <th>changeInCash</th>
-      <th>endDate</th>
       <th>...</th>
       <th>totalCashFromOperatingActivities</th>
+      <th>depreciation</th>
       <th>otherCashflowsFromInvestingActivities</th>
       <th>dividendsPaid</th>
       <th>changeToAccountReceivables</th>
       <th>otherCashflowsFromFinancingActivities</th>
-      <th>maxAge</th>
       <th>changeToNetincome</th>
-      <th>symbol</th>
-      <th>depreciation</th>
+      <th>repurchaseOfStock</th>
+      <th>issuanceOfStock</th>
       <th>capitalExpenditures</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>raw</td>
-      <td>-614000000</td>
-      <td>0</td>
-      <td>-1436000000</td>
-      <td>268000000</td>
-      <td>-292000000</td>
-      <td>551000000</td>
-      <td>14000000</td>
-      <td>817000000</td>
-      <td>-873000000</td>
-      <td>1561852800</td>
-      <td>...</td>
-      <td>813000000</td>
-      <td>-352000000</td>
-      <td>-194000000</td>
-      <td>-52000000</td>
-      <td>-23000000</td>
       <td>1</td>
-      <td>-228000000</td>
-      <td>AFL</td>
+      <td>1561852800</td>
+      <td>1109000000</td>
+      <td>0</td>
+      <td>AIG</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <td>fmt</td>
-      <td>-614M</td>
-      <td>None</td>
-      <td>-1.44B</td>
-      <td>268M</td>
-      <td>-292M</td>
-      <td>551M</td>
-      <td>14M</td>
-      <td>817M</td>
-      <td>-873M</td>
-      <td>2019-06-30</td>
-      <td>...</td>
-      <td>813M</td>
-      <td>-352M</td>
-      <td>-194M</td>
-      <td>-52M</td>
-      <td>-23M</td>
       <td>1</td>
-      <td>-228M</td>
-      <td>AFL</td>
+      <td>2019-06-30</td>
+      <td>1.11B</td>
+      <td>None</td>
+      <td>AIG</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <td>longFmt</td>
-      <td>-614,000,000</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>1,109,000,000</td>
       <td>0</td>
-      <td>-1,436,000,000</td>
-      <td>268,000,000</td>
-      <td>-292,000,000</td>
-      <td>551,000,000</td>
-      <td>14,000,000</td>
-      <td>817,000,000</td>
-      <td>-873,000,000</td>
+      <td>AIG</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>...</td>
-      <td>813,000,000</td>
-      <td>-352,000,000</td>
-      <td>-194,000,000</td>
-      <td>-52,000,000</td>
-      <td>-23,000,000</td>
-      <td>1</td>
-      <td>-228,000,000</td>
-      <td>AFL</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <td>raw</td>
-      <td>-2073000000</td>
-      <td>0</td>
-      <td>-1291000000</td>
-      <td>268000000</td>
-      <td>-686000000</td>
-      <td>468000000</td>
-      <td>12000000</td>
-      <td>928000000</td>
-      <td>-445000000</td>
+      <td>1</td>
       <td>1553990400</td>
+      <td>654000000</td>
+      <td>0</td>
+      <td>AIG</td>
+      <td>-1353000000</td>
+      <td>-1979000000</td>
+      <td>860000000</td>
+      <td>2764000000</td>
+      <td>-4073000000</td>
       <td>...</td>
-      <td>1544000000</td>
-      <td>958000000</td>
-      <td>-195000000</td>
-      <td>35000000</td>
-      <td>-13000000</td>
-      <td>1</td>
-      <td>-543000000</td>
-      <td>AFL</td>
+      <td>-976000000</td>
+      <td>1299000000</td>
+      <td>17000000</td>
+      <td>-278000000</td>
+      <td>315000000</td>
+      <td>1697000000</td>
+      <td>662000000</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <td>fmt</td>
-      <td>-2.07B</td>
-      <td>None</td>
-      <td>-1.29B</td>
-      <td>268M</td>
-      <td>-686M</td>
-      <td>468M</td>
-      <td>12M</td>
-      <td>928M</td>
-      <td>-445M</td>
+      <td>1</td>
       <td>2019-03-31</td>
+      <td>654M</td>
+      <td>None</td>
+      <td>AIG</td>
+      <td>-1.35B</td>
+      <td>-1.98B</td>
+      <td>860M</td>
+      <td>2.76B</td>
+      <td>-4.07B</td>
       <td>...</td>
-      <td>1.54B</td>
-      <td>958M</td>
-      <td>-195M</td>
-      <td>35M</td>
-      <td>-13M</td>
-      <td>1</td>
-      <td>-543M</td>
-      <td>AFL</td>
+      <td>-976M</td>
+      <td>1.3B</td>
+      <td>17M</td>
+      <td>-278M</td>
+      <td>315M</td>
+      <td>1.7B</td>
+      <td>662M</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
@@ -53954,127 +53951,127 @@ Data Acquisition Complete
     </tr>
     <tr>
       <td>fmt</td>
-      <td>-387M</td>
+      <td>1</td>
+      <td>2018-12-31</td>
+      <td>-165M</td>
       <td>None</td>
+      <td>L</td>
+      <td>-387M</td>
       <td>-727M</td>
       <td>-91M</td>
       <td>-260M</td>
       <td>432M</td>
-      <td>NaN</td>
-      <td>-165M</td>
-      <td>-166M</td>
-      <td>2018-12-31</td>
       <td>...</td>
       <td>827M</td>
+      <td>863M</td>
       <td>-56M</td>
       <td>-20M</td>
       <td>-149M</td>
       <td>-12M</td>
-      <td>1</td>
       <td>-357M</td>
-      <td>L</td>
-      <td>863M</td>
+      <td>-137M</td>
+      <td>NaN</td>
       <td>-264M</td>
     </tr>
     <tr>
       <td>longFmt</td>
-      <td>-387,000,000</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>-165,000,000</td>
       <td>0</td>
+      <td>L</td>
+      <td>-387,000,000</td>
       <td>-727,000,000</td>
       <td>-91,000,000</td>
       <td>-260,000,000</td>
       <td>432,000,000</td>
-      <td>NaN</td>
-      <td>-165,000,000</td>
-      <td>-166,000,000</td>
-      <td>NaN</td>
       <td>...</td>
       <td>827,000,000</td>
+      <td>863,000,000</td>
       <td>-56,000,000</td>
       <td>-20,000,000</td>
       <td>-149,000,000</td>
       <td>-12,000,000</td>
-      <td>1</td>
       <td>-357,000,000</td>
-      <td>L</td>
-      <td>863,000,000</td>
+      <td>-137,000,000</td>
+      <td>NaN</td>
       <td>-264,000,000</td>
     </tr>
     <tr>
       <td>raw</td>
-      <td>695000000</td>
+      <td>1</td>
+      <td>1538265600</td>
+      <td>278000000</td>
       <td>0</td>
+      <td>L</td>
+      <td>695000000</td>
       <td>520000000</td>
       <td>-15000000</td>
       <td>-1647000000</td>
       <td>-414000000</td>
-      <td>NaN</td>
-      <td>278000000</td>
-      <td>118000000</td>
-      <td>1538265600</td>
       <td>...</td>
       <td>1244000000</td>
+      <td>16000000</td>
       <td>-28000000</td>
       <td>-20000000</td>
       <td>525000000</td>
       <td>-1522000000</td>
-      <td>1</td>
       <td>622000000</td>
-      <td>L</td>
-      <td>16000000</td>
+      <td>-90000000</td>
+      <td>NaN</td>
       <td>-251000000</td>
     </tr>
     <tr>
       <td>fmt</td>
-      <td>695M</td>
+      <td>1</td>
+      <td>2018-09-30</td>
+      <td>278M</td>
       <td>None</td>
+      <td>L</td>
+      <td>695M</td>
       <td>520M</td>
       <td>-15M</td>
       <td>-1.65B</td>
       <td>-414M</td>
-      <td>NaN</td>
-      <td>278M</td>
-      <td>118M</td>
-      <td>2018-09-30</td>
       <td>...</td>
       <td>1.24B</td>
+      <td>16M</td>
       <td>-28M</td>
       <td>-20M</td>
       <td>525M</td>
       <td>-1.52B</td>
-      <td>1</td>
       <td>622M</td>
-      <td>L</td>
-      <td>16M</td>
+      <td>-90M</td>
+      <td>NaN</td>
       <td>-251M</td>
     </tr>
     <tr>
       <td>longFmt</td>
-      <td>695,000,000</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>278,000,000</td>
       <td>0</td>
+      <td>L</td>
+      <td>695,000,000</td>
       <td>520,000,000</td>
       <td>-15,000,000</td>
       <td>-1,647,000,000</td>
       <td>-414,000,000</td>
-      <td>NaN</td>
-      <td>278,000,000</td>
-      <td>118,000,000</td>
-      <td>NaN</td>
       <td>...</td>
       <td>1,244,000,000</td>
+      <td>16,000,000</td>
       <td>-28,000,000</td>
       <td>-20,000,000</td>
       <td>525,000,000</td>
       <td>-1,522,000,000</td>
-      <td>1</td>
       <td>622,000,000</td>
-      <td>L</td>
-      <td>16,000,000</td>
+      <td>-90,000,000</td>
+      <td>NaN</td>
       <td>-251,000,000</td>
     </tr>
   </tbody>
 </table>
-<p>228 rows × 22 columns</p>
+<p>240 rows × 22 columns</p>
 </div>
 </div>
 
@@ -54093,7 +54090,7 @@ Data Acquisition Complete
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Save dataframe to CSV</span>
@@ -54107,6 +54104,13 @@ Data Acquisition Complete
 </div>
 </div>
 
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Questions">Questions<a class="anchor-link" href="#Questions">&#182;</a></h1>
+</div>
+</div>
 </div></section></section>
 </div>
 </div>
