@@ -15,20 +15,40 @@
 >* [Source 4 - Financials - IEX Trading API](https://iextrading.com/developer/)
 >* [Source 5 - Financials - Fortune 500 Table](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)
 
+> Files Navigation:
+
+> Jupyter Notebooks codes are found in:
+>*ETL_Financial_Institutions_Banks --> One file for Extraction, Transformation and Load
+>*ETL_Public_Companies_Bankruptcy_2009_2011 --> One file for Extraction, Transformation and Load
+>*stocks_API_Code --> Two files. One for Extraction and the second one for Transformation and Load
+
+>Raw and Clean CSV & JSON data files are found in:
+>*Stocks_data_files
+>*bankruptcy_data_files
+>*Banks_data_files
+
+>Technical Report - Slides Format under Technical Reports Folders:
+>*ETL_Financial_Institutions_Banks_Final
+>*ETL_Public_Comapnies_Bankruptcy_2009_2011_Final
+>*ETL_Financial_Institutions_FINAL
+
+![Files Navigation](%%%%%%%%%%%%%%%%%%%%Navaigation files here%%%%%%%%%%%%%%%%%%%%%%%%)
+
+
 ## Non-Relational Database - ETL Public Companies Bankruptcy 2009 - 2011
 
 **Database Results**
 > Upload of 4 collections to non-relational database MongoDB. Each collection represents data for 2009, 2010 and 2011. A combined data collection is also included. Each collection details company name, assets, liabilities, fiscal year, state and the court district where the case is being handled.
 
-[MongoDB - Non-Relational Bankruptcy Database](![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/ETL1.gif)
+**MongoDB - Non-Relational Bankruptcy Database**
+![MongoDB - Non-Relational Bankruptcy Database](![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/ETL1.gif)
  
-**Files Navigation**
-
 
 **Data Extraction**
 
 
 **Data Transformation**
+
 
 **Data Load**
 
