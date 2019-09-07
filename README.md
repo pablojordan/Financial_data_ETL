@@ -33,6 +33,7 @@
 >* 	ETL_Financial_Institutions_FINAL
 
 **Files Navigation**
+---
 ![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/Navigation.gif)
 
 
@@ -42,13 +43,12 @@
 > Upload of 4 collections to non-relational database MongoDB. Each collection represents data for 2009, 2010 and 2011. A combined data collection is also included. Each collection details company name, assets, liabilities, fiscal year, state and the court district where the case is being handled.
 
 **MongoDB - Non-Relational Bankruptcy Database**
-(![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/MongoDB.gif)
+---
+![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/MongoDB.gif)
  
-
-**Data Extraction - Transformation - Load**
-
 **ETL Public Companies Bankruptcy 2009 - 2011**
-(![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/bankruptcy.gif)
+---
+![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/bankruptcy.gif)
 
 ## Relational Database - ETL Financial Institutions - Banks 
 
@@ -57,11 +57,13 @@
  
 
 **PostgreSQL - Relational Database Bank Failures**
-(![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/PostgreSQL.gif)
+---
+![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/PostgreSQL.gif)
 
 
 **ETL Financial Institutions Banks Failures**
-(![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/Banks.gif)
+---
+![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/Banks.gif)
 
 
 ## Relational Database - ETL Fortune 500 Financial Institutions - Insurance Industry
@@ -77,9 +79,11 @@
 >* Fortune 500 companies in the Insurance Industry (20 Companies) general information.
 
 **Extraction Fortune 500 Companies and Insurance Companies**
-(![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/export_financials.gif)
+---
+![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/export_financials.gif)
 
-(![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/transform_financials.gif)
+---
+![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/transform_financials.gif)
 
 
 
