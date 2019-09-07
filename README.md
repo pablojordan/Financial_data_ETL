@@ -1,4 +1,4 @@
-		![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/etl_process.jpg)
+![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/etl-process.png)
 
 
 # ETL | Financial Services Institutions 
@@ -9,11 +9,11 @@
 >* Financials DB --> Collections of daily stocks data for Fortune 500 companies and specifically collection of daily news, weekly historical socks data and last 4 quaters financial statement for all Fortune 500 (20 Companies) in the area of Financial Services - Insurance.
 
 > Sources: 
-* [Source 1 - Public Companies Bankruptcy](https://catalog.data.gov/dataset/public-company-bankruptcy-cases-opened-and-monitored)
-* [Source 2 - Banks failures 1934 to present](https://banks.data.fdic.gov/docs/#/Structure/searchInstitutions)
-* [Source 3 - Financials - Yahoo API](https://rapidapi.com/apidojo/api/yahoo-finance1?endpoint=5c3da178e4b0cc6cdc0ed6)
-* [Source 4 - Financials - IEX Trading API](https://iextrading.com/developer/)
-* [Source 5 - Financials - Fortune 500 Table](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)
+>* [Source 1 - Public Companies Bankruptcy](https://catalog.data.gov/dataset/public-company-bankruptcy-cases-opened-and-monitored)
+>* [Source 2 - Banks failures 1934 to present](https://banks.data.fdic.gov/docs/#/Structure/searchInstitutions)
+>* [Source 3 - Financials - Yahoo API](https://rapidapi.com/apidojo/api/yahoo-finance1?endpoint=5c3da178e4b0cc6cdc0ed6)
+>* [Source 4 - Financials - IEX Trading API](https://iextrading.com/developer/)
+>* [Source 5 - Financials - Fortune 500 Table](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)
 
 **Badges will go here**
 
