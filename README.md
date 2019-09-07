@@ -27,13 +27,13 @@
 >* 	bankruptcy_data_files
 >* 	Banks_data_files
 
->* Technical Report - Slides Format under Technical Reports Folders:
+>* Technical Report - Slides Format under Technical Reports Folder: USE PgUp or PgDn while looking at the .slides.html file
 >* 	ETL_Public_Comapnies_Bankruptcy_2009_2011_Final
 >* 	ETL_Financial_Institutions_Banks_Final
 >* 	ETL_Financial_Institutions_FINAL
 
 **Files Navigation**
-![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/Navigation.gif)
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
 ## Non-Relational Database - ETL Public Companies Bankruptcy 2009 - 2011
@@ -50,10 +50,18 @@
 **ETL Public Companies Bankruptcy 2009 - 2011**
 ($$$$$$$$$$$$$$$$$$$$$$$$$$$$ gift here)
 
-## Relational Database - ETL Financial Institutions - Banks
+## Relational Database - ETL Financial Institutions - Banks and Insurance
 
 **Database Results**
 > Historical data of Bank failures since 1934 to present. The database contains two main tables: Institutions and Locations
+> Database warehouse of:
+>* Fortune 500 companies general information 
+>* Daily stocks information for Fortune 500 Companies
+>* Latest News of Fortune 500 Companies in the Insurance Industry (20 Companies).
+>* Weekly Historical Stocks Data of Fortune 500 Companies in the Insurance Industry (20 Companies). Output Prices & Dividends. Date Range 2006 to Present.
+>* Financial Statements of the last 4 quarters (balance sheets, cashflow and income statements) of Fortune 500 Companies in the Insurance Industry (20 Companies).
+>* Fortune 500 companies in the Insurance Industry (20 Companies) general information. 
+
 
 **PostgreSQL - Relational Database Bank Failures**
 ($$$$$$$$$$$$$$$$graph here$#$$$$$$$$$$)
@@ -68,25 +76,13 @@
 
 **Database Results**
 
-> Database warehouse of:
->* Fortune 500 companies general information 
->* Daily stocks information for Fortune 500 Companies
->* Latest News of Fortune 500 Companies in the Insurance Industry (20 Companies).
->* Weekly Historical Stocks Data of Fortune 500 Companies in the Insurance Industry (20 Companies). Output Prices & Dividends. Date Range 2006 to Present.
->* Financial Statements of the last 4 quarters (balance sheets, cashflow and income statements) of Fortune 500 Companies in the Insurance Industry (20 Companies).
->* Fortune 500 companies in the Insurance Industry (20 Companies) general information. 
 
 
-**Data Extraction**
+**Data Extraction - Transformation - Load**
 
 **Extraction Fortune 500 Companies and Insurance Companies**
 (&&&&&&&&&&&&&&&&&&&&&&&&&&&)
 
-
-
-**Data Transformation and Load**
-**Extraction Fortune 500 Companies and Insurance Companies**
-($$$$$$$$$$$$$$$$$$$$$$$$$$$$$)
 
 
 
