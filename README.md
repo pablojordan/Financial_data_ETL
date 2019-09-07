@@ -57,6 +57,7 @@
 
 **PostgreSQL - Relational Database Bank Failures**
 ---
+
 ![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/PostgreSQL.gif)
 
 
@@ -79,8 +80,12 @@
 
 **Extraction Fortune 500 Companies and Insurance Companies**
 ---
+**Extraction Only**
+---
 ![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/export_financials.gif)
 
+---
+**Transformation & Load**
 ---
 ![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/transform_financials.gif)
 
