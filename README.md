@@ -36,7 +36,7 @@
 ![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/Navigation.gif)
 
 
-## Non-Relational Database - ETL Public Companies Bankruptcy 2009 - 2011
+## 1. Non-Relational Database - ETL Public Companies Bankruptcy 2009 - 2011
 
 **Database Results**
 > Upload of 4 collections to non-relational database MongoDB. Each collection represents data for 2009, 2010 and 2011. A combined data collection is also included. Each collection details company name, assets, liabilities, fiscal year, state and the court district where the case is being handled.
@@ -49,7 +49,7 @@
 ---
 ![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/bankruptcy.gif)
 
-## Relational Database - ETL Financial Institutions - Banks 
+## 2. Relational Database - ETL Financial Institutions - Banks 
 
 **Database Results**
 > Historical data of Bank failures since 1934 to present. The database contains two main tables: Institutions and Locations
@@ -66,7 +66,7 @@
 ![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/Banks.gif)
 
 
-## Relational Database - ETL Fortune 500 Financial Institutions - Insurance Industry
+## 3. Relational Database - ETL Fortune 500 Financial Institutions - Insurance Industry
 
 **Database Results**
 
