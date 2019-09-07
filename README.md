@@ -33,7 +33,7 @@
 >* 	ETL_Financial_Institutions_FINAL
 
 **Files Navigation**
-(![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/Navigation.gif)
+![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/Navigation.gif)
 
 
 ## Non-Relational Database - ETL Public Companies Bankruptcy 2009 - 2011
