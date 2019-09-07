@@ -21,15 +21,15 @@
 >* ETL_Public_Companies_Bankruptcy_2009_2011 --> One file for Extraction, Transformation and Load
 >* stocks_API_Code --> Two files. One for Extraction and the second one for Transformation and Load
 
-> Raw and Clean CSV & JSON data files are found in:
->* Stocks_data_files
->* bankruptcy_data_files
->* Banks_data_files
+>* Raw and Clean CSV & JSON data files are found in:
+>* 	Stocks_data_files
+>* 	bankruptcy_data_files
+>* 	Banks_data_files
 
->Technical Report - Slides Format under Technical Reports Folders:
->* ETL_Public_Comapnies_Bankruptcy_2009_2011_Final
->* ETL_Financial_Institutions_Banks_Final
->* ETL_Financial_Institutions_FINAL
+>* Technical Report - Slides Format under Technical Reports Folders:
+>* 	ETL_Public_Comapnies_Bankruptcy_2009_2011_Final
+>* 	ETL_Financial_Institutions_Banks_Final
+>* 	ETL_Financial_Institutions_FINAL
 
 **Files Navigation**
 (%%%%%%%%%%%%%%%%%%%%Navaigation files here%%%%%%%%%%%%%%%%%%%%%%%%)
