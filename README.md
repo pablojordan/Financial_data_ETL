@@ -1,4 +1,4 @@
-![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/etl-process.png)
+			![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/etl-process.png)
 
 
 # ETL | Financial Services Institutions 
@@ -16,13 +16,12 @@
 >* [Source 5 - Financials - Fortune 500 Table](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)
 
 > Files Navigation:
-
-> Jupyter Notebooks codes are found in:
+>*Jupyter Notebooks codes are found in:
 >*ETL_Financial_Institutions_Banks --> One file for Extraction, Transformation and Load
 >*ETL_Public_Companies_Bankruptcy_2009_2011 --> One file for Extraction, Transformation and Load
 >*stocks_API_Code --> Two files. One for Extraction and the second one for Transformation and Load
 
->Raw and Clean CSV & JSON data files are found in:
+> Raw and Clean CSV & JSON data files are found in:
 >*Stocks_data_files
 >*bankruptcy_data_files
 >*Banks_data_files
@@ -32,7 +31,8 @@
 >*ETL_Financial_Institutions_Banks_Final
 >*ETL_Financial_Institutions_FINAL
 
-![Files Navigation](%%%%%%%%%%%%%%%%%%%%Navaigation files here%%%%%%%%%%%%%%%%%%%%%%%%)
+**Files Navigation**
+(%%%%%%%%%%%%%%%%%%%%Navaigation files here%%%%%%%%%%%%%%%%%%%%%%%%)
 
 
 ## Non-Relational Database - ETL Public Companies Bankruptcy 2009 - 2011
@@ -46,23 +46,28 @@
 
 **Data Extraction - Transformation - Load**
 
-![ETL Public Companies Bankruptcy 2009 - 2011]($$$$$$$$$$$$$$$$$$$$$$$$$$$$ gift here)
+**ETL Public Companies Bankruptcy 2009 - 2011**
+($$$$$$$$$$$$$$$$$$$$$$$$$$$$ gift here)
 
 ## Relational Database - ETL Financial Institutions - Banks
 
 **Database Results**
 > Historical data of Bank failures since 1934 to present. The database contains two main tables: Institutions and Locations
-![PostgreSQL - Relational Database Bank Failures]($$$$$$$$$$$$$$$$graph here$#$$$$$$$$$$)
+
+**PostgreSQL - Relational Database Bank Failures**
+($$$$$$$$$$$$$$$$graph here$#$$$$$$$$$$)
 
 **Data Extraction - Transformation - Load**
 
-![ETL Financial Institutions Banks Failures](###################################################33)
+**ETL Financial Institutions Banks Failures**
+(###################################################33)
 
 
 ## Relational Database - ETL Fortune 500 Financial Institutions - Insurance Industry
 
 **Database Results**
->Database warehouse of:
+
+> Database warehouse of:
 >*Fortune 500 companies general information 
 >*Daily stocks information for Fortune 500 Companies
 >*Latest News of Fortune 500 Companies in the Insurance Industry (20 Companies).
@@ -72,12 +77,15 @@
 
 
 **Data Extraction**
-![Extraction Fortune 500 Companies](&&&&&&&&&&&&&&&&&&&&&&&&&&&)
+
+**Extraction Fortune 500 Companies and Insurance Companies**
+(&&&&&&&&&&&&&&&&&&&&&&&&&&&)
 
 
 
 **Data Transformation and Load**
-![Transformation and Load Fortune 500 Companies]($$$$$$$$$$$$$$$$$$$$$$$$$$$$$)
+**Extraction Fortune 500 Companies and Insurance Companies**
+($$$$$$$$$$$$$$$$$$$$$$$$$$$$$)
 
 
 
