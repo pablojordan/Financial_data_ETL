@@ -1,4 +1,4 @@
-			![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/etl-process.png)
+![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/etl-process.png)
 
 
 # ETL | Financial Services Institutions 
@@ -16,20 +16,20 @@
 >* [Source 5 - Financials - Fortune 500 Table](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)
 
 > Files Navigation:
->*Jupyter Notebooks codes are found in:
->*ETL_Financial_Institutions_Banks --> One file for Extraction, Transformation and Load
->*ETL_Public_Companies_Bankruptcy_2009_2011 --> One file for Extraction, Transformation and Load
->*stocks_API_Code --> Two files. One for Extraction and the second one for Transformation and Load
+>* Jupyter Notebooks codes are found in:
+>* ETL_Financial_Institutions_Banks --> One file for Extraction, Transformation and Load
+>* ETL_Public_Companies_Bankruptcy_2009_2011 --> One file for Extraction, Transformation and Load
+>* stocks_API_Code --> Two files. One for Extraction and the second one for Transformation and Load
 
 > Raw and Clean CSV & JSON data files are found in:
->*Stocks_data_files
->*bankruptcy_data_files
->*Banks_data_files
+>* Stocks_data_files
+>* bankruptcy_data_files
+>* Banks_data_files
 
 >Technical Report - Slides Format under Technical Reports Folders:
->*ETL_Public_Comapnies_Bankruptcy_2009_2011_Final
->*ETL_Financial_Institutions_Banks_Final
->*ETL_Financial_Institutions_FINAL
+>* ETL_Public_Comapnies_Bankruptcy_2009_2011_Final
+>* ETL_Financial_Institutions_Banks_Final
+>* ETL_Financial_Institutions_FINAL
 
 **Files Navigation**
 (%%%%%%%%%%%%%%%%%%%%Navaigation files here%%%%%%%%%%%%%%%%%%%%%%%%)
@@ -68,12 +68,12 @@
 **Database Results**
 
 > Database warehouse of:
->*Fortune 500 companies general information 
->*Daily stocks information for Fortune 500 Companies
->*Latest News of Fortune 500 Companies in the Insurance Industry (20 Companies).
->*Weekly Historical Stocks Data of Fortune 500 Companies in the Insurance Industry (20 Companies). Output Prices & Dividends. Date Range 2006 to Present.
->*Financial Statements of the last 4 quarters (balance sheets, cashflow and income statements) of Fortune 500 Companies in the Insurance Industry (20 Companies).
->*Fortune 500 companies in the Insurance Industry (20 Companies) general information. 
+>* Fortune 500 companies general information 
+>* Daily stocks information for Fortune 500 Companies
+>* Latest News of Fortune 500 Companies in the Insurance Industry (20 Companies).
+>* Weekly Historical Stocks Data of Fortune 500 Companies in the Insurance Industry (20 Companies). Output Prices & Dividends. Date Range 2006 to Present.
+>* Financial Statements of the last 4 quarters (balance sheets, cashflow and income statements) of Fortune 500 Companies in the Insurance Industry (20 Companies).
+>* Fortune 500 companies in the Insurance Industry (20 Companies) general information. 
 
 
 **Data Extraction**
