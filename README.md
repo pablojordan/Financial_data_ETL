@@ -15,18 +15,23 @@
 >* [Source 4 - Financials - IEX Trading API](https://iextrading.com/developer/)
 >* [Source 5 - Financials - Fortune 500 Table](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)
 
-**Badges will go here**
+## Non-Relational Database - ETL Public Companies Bankruptcy 2009 - 2011
 
-- build status
-- issues (waffle.io maybe)
-- devDependencies
-- npm package
-- coverage
-- slack
-- downloads
-- gitter chat
-- license
-- etc.
+**Database Results**
+> Upload of 4 collections to non-relational database MongoDB. Each collection represents data for 2009, 2010 and 2011. A combined data collection is also included. Each collection details company name, assets, liabilities, fiscal year, state and the court district where the case is being handled.
+
+[MongoDB - Non-Relational Bankruptcy Database](![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/ETL1.gif)
+ 
+**Files Navigation**
+
+
+**Data Extraction**
+
+
+**Data Transformation**
+
+**Data Load**
+
 
 [![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger) [![Dependency Status](http://img.shields.io/gemnasium/badges/badgerbadgerbadger.svg?style=flat-square)](https://gemnasium.com/badges/badgerbadgerbadger) [![Coverage Status](http://img.shields.io/coveralls/badges/badgerbadgerbadger.svg?style=flat-square)](https://coveralls.io/r/badges/badgerbadgerbadger) [![Code Climate](http://img.shields.io/codeclimate/github/badges/badgerbadgerbadger.svg?style=flat-square)](https://codeclimate.com/github/badges/badgerbadgerbadger) [![Github Issues](http://githubbadges.herokuapp.com/badges/badgerbadgerbadger/issues.svg?style=flat-square)](https://github.com/badges/badgerbadgerbadger/issues) [![Pending Pull-Requests](http://githubbadges.herokuapp.com/badges/badgerbadgerbadger/pulls.svg?style=flat-square)](https://github.com/badges/badgerbadgerbadger/pulls) [![Gem Version](http://img.shields.io/gem/v/badgerbadgerbadger.svg?style=flat-square)](https://rubygems.org/gems/badgerbadgerbadger) [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) [![Badges](http://img.shields.io/:badges-9/9-ff6799.svg?style=flat-square)](https://github.com/badges/badgerbadgerbadger)
 
