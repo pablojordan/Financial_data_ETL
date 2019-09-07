@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 
-<title>ETL_Public_Company_Bankruptcy_2009_2011 slides</title>
+<title>ETL_Financial_Institutions_Banks slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13255,23 +13255,8 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="ETL-|-Public-Companies-Bankruptcy-Cases-Opened-and-Monitored">ETL | Public Companies Bankruptcy Cases Opened and Monitored<a class="anchor-link" href="#ETL-|-Public-Companies-Bankruptcy-Cases-Opened-and-Monitored">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><h1>Table of Contents<span class="tocSkip"></span></h1></p>
-<div class="toc"><ul class="toc-item"><li><span><a href="#ETL-|-Public-Companies-Bankruptcy-Cases-Opened-and-Monitored" data-toc-modified-id="ETL-|-Public-Companies-Bankruptcy-Cases-Opened-and-Monitored-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>ETL | Public Companies Bankruptcy Cases Opened and Monitored</a></span><ul class="toc-item"><li><span><a href="#Data-Set-Source-2009---2011" data-toc-modified-id="Data-Set-Source-2009---2011-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Data Set Source 2009 - 2011</a></span></li></ul></li><li><span><a href="#Dependecies" data-toc-modified-id="Dependecies-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Dependecies</a></span></li><li><span><a href="#Extract" data-toc-modified-id="Extract-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Extract</a></span><ul class="toc-item"><li><span><a href="#Load-&amp;-Read-CSV" data-toc-modified-id="Load-&amp;-Read-CSV-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>Load &amp; Read CSV</a></span></li></ul></li><li><span><a href="#Transform" data-toc-modified-id="Transform-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Transform</a></span><ul class="toc-item"><li><span><a href="#Add,-drop,-rearrenge,-rename-columns" data-toc-modified-id="Add,-drop,-rearrenge,-rename-columns-4.1"><span class="toc-item-num">4.1&nbsp;&nbsp;</span>Add, drop, rearrenge, rename columns</a></span></li><li><span><a href="#Data-info,-types" data-toc-modified-id="Data-info,-types-4.2"><span class="toc-item-num">4.2&nbsp;&nbsp;</span>Data info, types</a></span></li><li><span><a href="#Identify-columns-with-bad-data" data-toc-modified-id="Identify-columns-with-bad-data-4.3"><span class="toc-item-num">4.3&nbsp;&nbsp;</span>Identify columns with bad data</a></span></li><li><span><a href="#Drop-row-with-bad-data" data-toc-modified-id="Drop-row-with-bad-data-4.4"><span class="toc-item-num">4.4&nbsp;&nbsp;</span>Drop row with bad data</a></span></li><li><span><a href="#Check-deletion" data-toc-modified-id="Check-deletion-4.5"><span class="toc-item-num">4.5&nbsp;&nbsp;</span>Check deletion</a></span></li><li><span><a href="#String-replace,-set-column-type" data-toc-modified-id="String-replace,-set-column-type-4.6"><span class="toc-item-num">4.6&nbsp;&nbsp;</span>String replace, set column type</a></span></li><li><span><a href="#Append-data" data-toc-modified-id="Append-data-4.7"><span class="toc-item-num">4.7&nbsp;&nbsp;</span>Append data</a></span></li><li><span><a href="#Save-to-CSV-and-json" data-toc-modified-id="Save-to-CSV-and-json-4.8"><span class="toc-item-num">4.8&nbsp;&nbsp;</span>Save to CSV and json</a></span></li></ul></li><li><span><a href="#Load" data-toc-modified-id="Load-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>Load</a></span><ul class="toc-item"><li><span><a href="#Dependencies" data-toc-modified-id="Dependencies-5.1"><span class="toc-item-num">5.1&nbsp;&nbsp;</span>Dependencies</a></span></li><li><span><a href="#Connect-to-postgresSQL-database" data-toc-modified-id="Connect-to-postgresSQL-database-5.2"><span class="toc-item-num">5.2&nbsp;&nbsp;</span>Connect to postgresSQL database</a></span></li><li><span><a href="#Load-csv-to-database" data-toc-modified-id="Load-csv-to-database-5.3"><span class="toc-item-num">5.3&nbsp;&nbsp;</span>Load csv to database</a></span></li><li><span><a href="#Query-Database-to-confirm-upload" data-toc-modified-id="Query-Database-to-confirm-upload-5.4"><span class="toc-item-num">5.4&nbsp;&nbsp;</span>Query Database to confirm upload</a></span></li><li><span><a href="#Create-a-table-view" data-toc-modified-id="Create-a-table-view-5.5"><span class="toc-item-num">5.5&nbsp;&nbsp;</span>Create a table view</a></span></li></ul></li><li><span><a href="#Questions-??" data-toc-modified-id="Questions-??-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>Questions ??</a></span></li></ul></div>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Data-Set-Source-2009---2011">Data Set Source 2009 - 2011<a class="anchor-link" href="#Data-Set-Source-2009---2011">&#182;</a></h2><p><a href="https://catalog.data.gov/dataset/public-company-bankruptcy-cases-opened-and-monitored">https://catalog.data.gov/dataset/public-company-bankruptcy-cases-opened-and-monitored</a></p>
-<p>Data updated June 18, 2019</p>
+<h1 id="ETL-|-Financial-Institutions---Historical-banks-failures-1934---Present">ETL | Financial Institutions - Historical banks failures 1934 - Present<a class="anchor-link" href="#ETL-|-Financial-Institutions---Historical-banks-failures-1934---Present">&#182;</a></h1><p>Source <a href="&#39;https://banks.data.fdic.gov/docs/#/Structure/searchInstitutions&#39;">FDIC - Federal Deposit Insurance Corporation</a></p>
+<p>Data last updated June 2018</p>
 
 </div>
 </div>
@@ -13279,7 +13264,40 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Dependecies">Dependecies<a class="anchor-link" href="#Dependecies">&#182;</a></h1>
+<h1 id="Dependencies">Dependencies<a class="anchor-link" href="#Dependencies">&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Dependencies and Setup</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="k">import</span> <span class="n">create_engine</span>
+<span class="kn">import</span> <span class="nn">secret</span> <span class="c1">#file with database password</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Extract">Extract<a class="anchor-link" href="#Extract">&#182;</a></h1>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Load-and-Read-CSV">Load and Read CSV<a class="anchor-link" href="#Load-and-Read-CSV">&#182;</a></h2>
 </div>
 </div>
 </div></section><section>
@@ -13288,143 +13306,297 @@ a.anchor-link {
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="k">import</span> <span class="n">create_engine</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load CSV files</span>
+
+<span class="n">institutions</span> <span class="o">=</span> <span class="s2">&quot;../financial_instituttions_data/institutions.csv&quot;</span>
+<span class="n">locations</span> <span class="o">=</span> <span class="s2">&quot;../financial_instituttions_data/locations.csv&quot;</span>
+
+<span class="c1"># Read files and store into Pandas DataFrame</span>
+<span class="c1"># Due to low memory error read https://stackoverflow.com/questions/24251219/pandas-read-csv-low-memory-and-dtype-options</span>
+
+<span class="n">institutions_df</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">institutions</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">error_bad_lines</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;unicode&#39;</span><span class="p">)</span>
+<span class="n">locations_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">locations</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">error_bad_lines</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;unicode&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Extract">Extract<a class="anchor-link" href="#Extract">&#182;</a></h1><h2 id="Load-&amp;-Read-CSV">Load &amp; Read CSV<a class="anchor-link" href="#Load-&amp;-Read-CSV">&#182;</a></h2>
-</div>
-</div>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load CSV files</span>
-
-<span class="n">data09</span> <span class="o">=</span> <span class="s2">&quot;bankruptcy_data/public_company_bankruptcy_cases_2009.csv&quot;</span>
-<span class="n">data10</span> <span class="o">=</span> <span class="s2">&quot;bankruptcy_data/public_company_bankruptcy_cases_2010.csv&quot;</span>
-<span class="n">data11</span> <span class="o">=</span> <span class="s2">&quot;bankruptcy_data/public_company_bankruptcy_cases_2011.csv&quot;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">institutions_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">locations_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">locations_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[3]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ADDRESS</th>
+      <th>BKCLASS</th>
+      <th>CBSA</th>
+      <th>CBSA_DIV</th>
+      <th>CBSA_DIV_FLG</th>
+      <th>CBSA_DIV_NO</th>
+      <th>CBSA_METRO</th>
+      <th>CBSA_METRO_FLG</th>
+      <th>CBSA_METRO_NAME</th>
+      <th>CBSA_MICRO_FLG</th>
+      <th>CBSA_NO</th>
+      <th>CERT</th>
+      <th>CITY</th>
+      <th>COUNTY</th>
+      <th>CSA</th>
+      <th>CSA_FLG</th>
+      <th>CSA_NO</th>
+      <th>ESTYMD</th>
+      <th>FI_UNINUM</th>
+      <th>MAINOFF</th>
+      <th>NAME</th>
+      <th>OFFNAME</th>
+      <th>OFFNUM</th>
+      <th>RUNDATE</th>
+      <th>SERVTYPE</th>
+      <th>STALP</th>
+      <th>STCNTY</th>
+      <th>STNAME</th>
+      <th>UNINUM</th>
+      <th>ZIP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>4500 WASHINGTON AVENUE</td>
+      <td>N</td>
+      <td>Evansville, IN-KY</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>21780</td>
+      <td>1</td>
+      <td>Evansville, IN-KY</td>
+      <td>0</td>
+      <td>21780</td>
+      <td>3832</td>
+      <td>EVANSVILLE</td>
+      <td>VANDERBURGH</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>10/03/1963</td>
+      <td>2492</td>
+      <td>0</td>
+      <td>Old National Bank</td>
+      <td>HEBRON PLACE BRANCH</td>
+      <td>8</td>
+      <td>09/04/2019</td>
+      <td>11</td>
+      <td>IN</td>
+      <td>18163</td>
+      <td>INDIANA</td>
+      <td>203604</td>
+      <td>47714</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2202 NORTH SIXTH STREET</td>
+      <td>SM</td>
+      <td>Vincennes, IN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>47180</td>
+      <td>12368</td>
+      <td>VINCENNES</td>
+      <td>KNOX</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>11/01/1971</td>
+      <td>7866</td>
+      <td>0</td>
+      <td>Regions Bank</td>
+      <td>NORTH VINCENNES BRANCH</td>
+      <td>1636</td>
+      <td>09/04/2019</td>
+      <td>11</td>
+      <td>IN</td>
+      <td>18083</td>
+      <td>INDIANA</td>
+      <td>203651</td>
+      <td>47591</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>628 WEST MAIN STREET</td>
+      <td>NM</td>
+      <td>Bedford, IN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>13260</td>
+      <td>27744</td>
+      <td>MITCHELL</td>
+      <td>LAWRENCE</td>
+      <td>Bloomington-Bedford, IN</td>
+      <td>1</td>
+      <td>144</td>
+      <td>10/01/1995</td>
+      <td>40578</td>
+      <td>0</td>
+      <td>MutualBank</td>
+      <td>MESSENGER SERVICE BRANCH</td>
+      <td>144</td>
+      <td>09/04/2019</td>
+      <td>27</td>
+      <td>IN</td>
+      <td>18093</td>
+      <td>INDIANA</td>
+      <td>203628</td>
+      <td>47446</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>17 CHERRY TREE PLAZA, US HIGHWAY 50 EAST</td>
+      <td>NM</td>
+      <td>Washington, IN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>47780</td>
+      <td>17393</td>
+      <td>WASHINGTON</td>
+      <td>DAVIESS</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>03/15/1989</td>
+      <td>11392</td>
+      <td>0</td>
+      <td>German American Bank</td>
+      <td>WASHINGTON CHERRY TREE BRANCH</td>
+      <td>30</td>
+      <td>09/04/2019</td>
+      <td>11</td>
+      <td>IN</td>
+      <td>18027</td>
+      <td>INDIANA</td>
+      <td>203662</td>
+      <td>47501</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>5321 COUNCIL STREET, N.E.</td>
+      <td>N</td>
+      <td>Cedar Rapids, IA</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>16300</td>
+      <td>1</td>
+      <td>Cedar Rapids, IA</td>
+      <td>0</td>
+      <td>16300</td>
+      <td>6548</td>
+      <td>CEDAR RAPIDS</td>
+      <td>LINN</td>
+      <td>Cedar Rapids-Iowa City, IA</td>
+      <td>1</td>
+      <td>168</td>
+      <td>01/16/1978</td>
+      <td>4383</td>
+      <td>0</td>
+      <td>U.S. Bank National Association</td>
+      <td>CEDAR RAPIDS COUNCIL STREET BRANCH</td>
+      <td>568</td>
+      <td>09/04/2019</td>
+      <td>11</td>
+      <td>IA</td>
+      <td>19113</td>
+      <td>IOWA</td>
+      <td>203680</td>
+      <td>52402</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Transform-Locations-DF">Transform Locations DF<a class="anchor-link" href="#Transform-Locations-DF">&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Drop-&amp;-rearrenge">Drop &amp; rearrenge<a class="anchor-link" href="#Drop-&amp;-rearrenge">&#182;</a></h2>
+</div>
+</div>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Read all data files and store into Pandas DataFrame</span>
-
-<span class="n">data09_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data09</span><span class="p">)</span>
-<span class="n">data10_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data10</span><span class="p">)</span>
-<span class="n">data11_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data11</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Transform">Transform<a class="anchor-link" href="#Transform">&#182;</a></h1>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Add,-drop,-rearrenge,-rename-columns">Add, drop, rearrenge, rename columns<a class="anchor-link" href="#Add,-drop,-rearrenge,-rename-columns">&#182;</a></h2>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Add fiscal year to each data frame</span>
-
-<span class="n">data09_df</span><span class="p">[</span><span class="s1">&#39;FISCAL_YEAR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2009</span>
-<span class="n">data10_df</span><span class="p">[</span><span class="s1">&#39;FISCAL_YEAR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2010</span>
-<span class="n">data11_df</span><span class="p">[</span><span class="s1">&#39;FISCAL_YEAR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2011</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Drop NAN values</span>
-
-<span class="n">data09_df</span> <span class="o">=</span> <span class="n">data09_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-<span class="n">data10_df</span> <span class="o">=</span> <span class="n">data10_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-<span class="n">data11_df</span> <span class="o">=</span> <span class="n">data11_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Rearrenge columns of all data and reaname columns</span>
-
-<span class="n">data09_df</span> <span class="o">=</span> <span class="n">data09_df</span><span class="p">[[</span><span class="s1">&#39;FISCAL_YEAR&#39;</span><span class="p">,</span><span class="s1">&#39;STATE&#39;</span><span class="p">,</span> <span class="s1">&#39;COMPANY NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;ASSETS (MILLIONS)&#39;</span><span class="p">,</span><span class="s1">&#39;LIABILITIES (MILLIONS)&#39;</span><span class="p">,</span> <span class="s1">&#39;DISTRICT&#39;</span><span class="p">]]</span> 
-<span class="n">data09_df</span> <span class="o">=</span> <span class="n">data09_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span> <span class="p">{</span><span class="s1">&#39;COMPANY NAME&#39;</span><span class="p">:</span> <span class="s1">&#39;COMPANY&#39;</span><span class="p">,</span> <span class="s1">&#39;ASSETS (MILLIONS)&#39;</span><span class="p">:</span> <span class="s1">&#39;ASSETS_MILLIONS&#39;</span><span class="p">,</span> <span class="s1">&#39;LIABILITIES (MILLIONS)&#39;</span><span class="p">:</span><span class="s1">&#39;LIABILITIES_MILLIONS&#39;</span><span class="p">,</span> <span class="s1">&#39;DISTRICT&#39;</span><span class="p">:</span> <span class="s1">&#39;COURT_DISTRICT&#39;</span><span class="p">})</span>
-
-<span class="n">data10_df</span> <span class="o">=</span> <span class="n">data10_df</span><span class="p">[[</span><span class="s1">&#39;FISCAL_YEAR&#39;</span><span class="p">,</span><span class="s1">&#39;STATE&#39;</span><span class="p">,</span> <span class="s1">&#39;COMPANY NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;ASSETS (MILLIONS)&#39;</span><span class="p">,</span><span class="s1">&#39;LIABILITIES (MILLIONS)&#39;</span><span class="p">,</span> <span class="s1">&#39;DISTRICT&#39;</span><span class="p">]]</span> 
-<span class="n">data10_df</span> <span class="o">=</span> <span class="n">data10_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span> <span class="p">{</span><span class="s1">&#39;COMPANY NAME&#39;</span><span class="p">:</span> <span class="s1">&#39;COMPANY&#39;</span><span class="p">,</span> <span class="s1">&#39;ASSETS (MILLIONS)&#39;</span><span class="p">:</span> <span class="s1">&#39;ASSETS_MILLIONS&#39;</span><span class="p">,</span> <span class="s1">&#39;LIABILITIES (MILLIONS)&#39;</span><span class="p">:</span><span class="s1">&#39;LIABILITIES_MILLIONS&#39;</span><span class="p">,</span> <span class="s1">&#39;DISTRICT&#39;</span><span class="p">:</span> <span class="s1">&#39;COURT_DISTRICT&#39;</span><span class="p">})</span>
-
-<span class="n">data11_df</span> <span class="o">=</span> <span class="n">data11_df</span><span class="p">[[</span><span class="s1">&#39;FISCAL_YEAR&#39;</span><span class="p">,</span><span class="s1">&#39;STATE&#39;</span><span class="p">,</span> <span class="s1">&#39;COMPANY NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;ASSETS (MILLIONS)&#39;</span><span class="p">,</span><span class="s1">&#39;LIABILITIES (MILLIONS)&#39;</span><span class="p">,</span> <span class="s1">&#39;DISTRICT&#39;</span><span class="p">]]</span> 
-<span class="n">data11_df</span> <span class="o">=</span> <span class="n">data11_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span> <span class="p">{</span><span class="s1">&#39;COMPANY NAME&#39;</span><span class="p">:</span> <span class="s1">&#39;COMPANY&#39;</span><span class="p">,</span> <span class="s1">&#39;ASSETS (MILLIONS)&#39;</span><span class="p">:</span> <span class="s1">&#39;ASSETS_MILLIONS&#39;</span><span class="p">,</span> <span class="s1">&#39;LIABILITIES (MILLIONS)&#39;</span><span class="p">:</span><span class="s1">&#39;LIABILITIES_MILLIONS&#39;</span><span class="p">,</span> <span class="s1">&#39;DISTRICT&#39;</span><span class="p">:</span> <span class="s1">&#39;COURT_DISTRICT&#39;</span><span class="p">})</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Data-info,-types">Data info, types<a class="anchor-link" href="#Data-info,-types">&#182;</a></h2>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data09_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-<span class="n">data10_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-<span class="n">data11_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Print all columns names</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">locations_df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13441,39 +13613,11 @@ a.anchor-link {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-Int64Index: 127 entries, 0 to 128
-Data columns (total 6 columns):
-FISCAL_YEAR             127 non-null int64
-STATE                   127 non-null object
-COMPANY                 127 non-null object
-ASSETS_MILLIONS         127 non-null float64
-LIABILITIES_MILLIONS    127 non-null float64
-COURT_DISTRICT          127 non-null object
-dtypes: float64(2), int64(1), object(3)
-memory usage: 6.9+ KB
-&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-Int64Index: 63 entries, 1 to 63
-Data columns (total 6 columns):
-FISCAL_YEAR             63 non-null int64
-STATE                   63 non-null object
-COMPANY                 63 non-null object
-ASSETS_MILLIONS         63 non-null object
-LIABILITIES_MILLIONS    63 non-null object
-COURT_DISTRICT          63 non-null object
-dtypes: int64(1), object(5)
-memory usage: 3.4+ KB
-&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-Int64Index: 62 entries, 0 to 61
-Data columns (total 6 columns):
-FISCAL_YEAR             62 non-null int64
-STATE                   62 non-null object
-COMPANY                 62 non-null object
-ASSETS_MILLIONS         62 non-null object
-LIABILITIES_MILLIONS    62 non-null object
-COURT_DISTRICT          62 non-null object
-dtypes: int64(1), object(5)
-memory usage: 3.4+ KB
+<pre>[&#39;ADDRESS&#39; &#39;BKCLASS&#39; &#39;CBSA&#39; &#39;CBSA_DIV&#39; &#39;CBSA_DIV_FLG&#39; &#39;CBSA_DIV_NO&#39;
+ &#39;CBSA_METRO&#39; &#39;CBSA_METRO_FLG&#39; &#39;CBSA_METRO_NAME&#39; &#39;CBSA_MICRO_FLG&#39;
+ &#39;CBSA_NO&#39; &#39;CERT&#39; &#39;CITY&#39; &#39;COUNTY&#39; &#39;CSA&#39; &#39;CSA_FLG&#39; &#39;CSA_NO&#39; &#39;ESTYMD&#39;
+ &#39;FI_UNINUM&#39; &#39;MAINOFF&#39; &#39;NAME&#39; &#39;OFFNAME&#39; &#39;OFFNUM&#39; &#39;RUNDATE&#39; &#39;SERVTYPE&#39;
+ &#39;STALP&#39; &#39;STCNTY&#39; &#39;STNAME&#39; &#39;UNINUM&#39; &#39;ZIP&#39;]
 </pre>
 </div>
 </div>
@@ -13484,10 +13628,513 @@ memory usage: 3.4+ KB
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">locations_df</span> <span class="o">=</span> <span class="n">locations_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;BKCLASS&#39;</span><span class="p">,</span><span class="s1">&#39;CBSA_DIV&#39;</span><span class="p">,</span><span class="s1">&#39;CBSA_DIV_FLG&#39;</span><span class="p">,</span><span class="s1">&#39;CBSA_DIV_NO&#39;</span><span class="p">,</span>\
+ <span class="s1">&#39;CBSA_METRO&#39;</span><span class="p">,</span><span class="s1">&#39;CBSA_METRO_FLG&#39;</span><span class="p">,</span><span class="s1">&#39;CBSA_METRO_NAME&#39;</span><span class="p">,</span><span class="s1">&#39;CBSA_MICRO_FLG&#39;</span><span class="p">,</span>\
+   <span class="s1">&#39;CSA&#39;</span><span class="p">,</span><span class="s1">&#39;CSA_FLG&#39;</span><span class="p">,</span><span class="s1">&#39;CSA_NO&#39;</span><span class="p">,</span><span class="s1">&#39;ESTYMD&#39;</span><span class="p">,</span>\
+  <span class="s1">&#39;MAINOFF&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">locations_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[6]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ADDRESS</th>
+      <th>CBSA</th>
+      <th>CBSA_NO</th>
+      <th>CERT</th>
+      <th>CITY</th>
+      <th>COUNTY</th>
+      <th>FI_UNINUM</th>
+      <th>NAME</th>
+      <th>OFFNAME</th>
+      <th>OFFNUM</th>
+      <th>RUNDATE</th>
+      <th>SERVTYPE</th>
+      <th>STALP</th>
+      <th>STCNTY</th>
+      <th>STNAME</th>
+      <th>UNINUM</th>
+      <th>ZIP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>4500 WASHINGTON AVENUE</td>
+      <td>Evansville, IN-KY</td>
+      <td>21780</td>
+      <td>3832</td>
+      <td>EVANSVILLE</td>
+      <td>VANDERBURGH</td>
+      <td>2492</td>
+      <td>Old National Bank</td>
+      <td>HEBRON PLACE BRANCH</td>
+      <td>8</td>
+      <td>09/04/2019</td>
+      <td>11</td>
+      <td>IN</td>
+      <td>18163</td>
+      <td>INDIANA</td>
+      <td>203604</td>
+      <td>47714</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2202 NORTH SIXTH STREET</td>
+      <td>Vincennes, IN</td>
+      <td>47180</td>
+      <td>12368</td>
+      <td>VINCENNES</td>
+      <td>KNOX</td>
+      <td>7866</td>
+      <td>Regions Bank</td>
+      <td>NORTH VINCENNES BRANCH</td>
+      <td>1636</td>
+      <td>09/04/2019</td>
+      <td>11</td>
+      <td>IN</td>
+      <td>18083</td>
+      <td>INDIANA</td>
+      <td>203651</td>
+      <td>47591</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>628 WEST MAIN STREET</td>
+      <td>Bedford, IN</td>
+      <td>13260</td>
+      <td>27744</td>
+      <td>MITCHELL</td>
+      <td>LAWRENCE</td>
+      <td>40578</td>
+      <td>MutualBank</td>
+      <td>MESSENGER SERVICE BRANCH</td>
+      <td>144</td>
+      <td>09/04/2019</td>
+      <td>27</td>
+      <td>IN</td>
+      <td>18093</td>
+      <td>INDIANA</td>
+      <td>203628</td>
+      <td>47446</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>17 CHERRY TREE PLAZA, US HIGHWAY 50 EAST</td>
+      <td>Washington, IN</td>
+      <td>47780</td>
+      <td>17393</td>
+      <td>WASHINGTON</td>
+      <td>DAVIESS</td>
+      <td>11392</td>
+      <td>German American Bank</td>
+      <td>WASHINGTON CHERRY TREE BRANCH</td>
+      <td>30</td>
+      <td>09/04/2019</td>
+      <td>11</td>
+      <td>IN</td>
+      <td>18027</td>
+      <td>INDIANA</td>
+      <td>203662</td>
+      <td>47501</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>5321 COUNCIL STREET, N.E.</td>
+      <td>Cedar Rapids, IA</td>
+      <td>16300</td>
+      <td>6548</td>
+      <td>CEDAR RAPIDS</td>
+      <td>LINN</td>
+      <td>4383</td>
+      <td>U.S. Bank National Association</td>
+      <td>CEDAR RAPIDS COUNCIL STREET BRANCH</td>
+      <td>568</td>
+      <td>09/04/2019</td>
+      <td>11</td>
+      <td>IA</td>
+      <td>19113</td>
+      <td>IOWA</td>
+      <td>203680</td>
+      <td>52402</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Rearrenge columns where I only care the first 3 </span>
+
+<span class="n">new_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;CITY&#39;</span><span class="p">,</span> <span class="s1">&#39;STNAME&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">locations_df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;CITY&#39;</span><span class="p">,</span> <span class="s1">&#39;STNAME&#39;</span><span class="p">]]</span>
+                                    
+
+<span class="c1"># Re-index after rearrenging</span>
+<span class="n">locations_df</span> <span class="o">=</span> <span class="n">locations_df</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="n">new_cols</span><span class="p">)</span>
+<span class="n">locations_df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[7]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>NAME</th>
+      <th>CITY</th>
+      <th>STNAME</th>
+      <th>ADDRESS</th>
+      <th>CBSA</th>
+      <th>CBSA_NO</th>
+      <th>CERT</th>
+      <th>COUNTY</th>
+      <th>FI_UNINUM</th>
+      <th>OFFNAME</th>
+      <th>OFFNUM</th>
+      <th>RUNDATE</th>
+      <th>SERVTYPE</th>
+      <th>STALP</th>
+      <th>STCNTY</th>
+      <th>UNINUM</th>
+      <th>ZIP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Old National Bank</td>
+      <td>EVANSVILLE</td>
+      <td>INDIANA</td>
+      <td>4500 WASHINGTON AVENUE</td>
+      <td>Evansville, IN-KY</td>
+      <td>21780</td>
+      <td>3832</td>
+      <td>VANDERBURGH</td>
+      <td>2492</td>
+      <td>HEBRON PLACE BRANCH</td>
+      <td>8</td>
+      <td>09/04/2019</td>
+      <td>11</td>
+      <td>IN</td>
+      <td>18163</td>
+      <td>203604</td>
+      <td>47714</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Regions Bank</td>
+      <td>VINCENNES</td>
+      <td>INDIANA</td>
+      <td>2202 NORTH SIXTH STREET</td>
+      <td>Vincennes, IN</td>
+      <td>47180</td>
+      <td>12368</td>
+      <td>KNOX</td>
+      <td>7866</td>
+      <td>NORTH VINCENNES BRANCH</td>
+      <td>1636</td>
+      <td>09/04/2019</td>
+      <td>11</td>
+      <td>IN</td>
+      <td>18083</td>
+      <td>203651</td>
+      <td>47591</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>MutualBank</td>
+      <td>MITCHELL</td>
+      <td>INDIANA</td>
+      <td>628 WEST MAIN STREET</td>
+      <td>Bedford, IN</td>
+      <td>13260</td>
+      <td>27744</td>
+      <td>LAWRENCE</td>
+      <td>40578</td>
+      <td>MESSENGER SERVICE BRANCH</td>
+      <td>144</td>
+      <td>09/04/2019</td>
+      <td>27</td>
+      <td>IN</td>
+      <td>18093</td>
+      <td>203628</td>
+      <td>47446</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>German American Bank</td>
+      <td>WASHINGTON</td>
+      <td>INDIANA</td>
+      <td>17 CHERRY TREE PLAZA, US HIGHWAY 50 EAST</td>
+      <td>Washington, IN</td>
+      <td>47780</td>
+      <td>17393</td>
+      <td>DAVIESS</td>
+      <td>11392</td>
+      <td>WASHINGTON CHERRY TREE BRANCH</td>
+      <td>30</td>
+      <td>09/04/2019</td>
+      <td>11</td>
+      <td>IN</td>
+      <td>18027</td>
+      <td>203662</td>
+      <td>47501</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>U.S. Bank National Association</td>
+      <td>CEDAR RAPIDS</td>
+      <td>IOWA</td>
+      <td>5321 COUNCIL STREET, N.E.</td>
+      <td>Cedar Rapids, IA</td>
+      <td>16300</td>
+      <td>6548</td>
+      <td>LINN</td>
+      <td>4383</td>
+      <td>CEDAR RAPIDS COUNCIL STREET BRANCH</td>
+      <td>568</td>
+      <td>09/04/2019</td>
+      <td>11</td>
+      <td>IA</td>
+      <td>19113</td>
+      <td>203680</td>
+      <td>52402</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>88815</td>
+      <td>Piedmont Federal Savings Bank</td>
+      <td>HIGH POINT</td>
+      <td>NORTH CAROLINA</td>
+      <td>3870 JOHN GORDON LANE</td>
+      <td>Greensboro-High Point, NC</td>
+      <td>24660</td>
+      <td>27619</td>
+      <td>GUILFORD</td>
+      <td>40453</td>
+      <td>Piedmont Federal Savings Bank-Palladium Branch</td>
+      <td>103</td>
+      <td>09/04/2019</td>
+      <td>11</td>
+      <td>NC</td>
+      <td>37081</td>
+      <td>616500</td>
+      <td>27265</td>
+    </tr>
+    <tr>
+      <td>88816</td>
+      <td>Home Bank, National Association</td>
+      <td>JEFFERSON</td>
+      <td>LOUISIANA</td>
+      <td>1105 S CLEARVIEW PKWY</td>
+      <td>New Orleans-Metairie, LA</td>
+      <td>35380</td>
+      <td>28094</td>
+      <td>JEFFERSON</td>
+      <td>40928</td>
+      <td>CLEARVIEW BRANCH</td>
+      <td>53</td>
+      <td>09/04/2019</td>
+      <td>11</td>
+      <td>LA</td>
+      <td>22051</td>
+      <td>616590</td>
+      <td>70121</td>
+    </tr>
+    <tr>
+      <td>88817</td>
+      <td>Northwestern Bank, National Association</td>
+      <td>FERGUS FALLS</td>
+      <td>MINNESOTA</td>
+      <td>402 W LINCOLN AVE</td>
+      <td>Fergus Falls, MN</td>
+      <td>22260</td>
+      <td>9746</td>
+      <td>OTTER TAIL</td>
+      <td>6234</td>
+      <td>Northwestern Bank NA</td>
+      <td>5</td>
+      <td>09/04/2019</td>
+      <td>11</td>
+      <td>MN</td>
+      <td>27111</td>
+      <td>614809</td>
+      <td>56537</td>
+    </tr>
+    <tr>
+      <td>88818</td>
+      <td>Penn Community Bank</td>
+      <td>LANGHORNE</td>
+      <td>PENNSYLVANIA</td>
+      <td>200 MANOR AVE</td>
+      <td>Philadelphia-Camden-Wilmington, PA-NJ-DE-MD</td>
+      <td>37980</td>
+      <td>30401</td>
+      <td>BUCKS</td>
+      <td>43235</td>
+      <td>Cairn University</td>
+      <td>126</td>
+      <td>09/04/2019</td>
+      <td>29</td>
+      <td>PA</td>
+      <td>42017</td>
+      <td>614819</td>
+      <td>19047</td>
+    </tr>
+    <tr>
+      <td>88819</td>
+      <td>Wells Fargo Bank, National Association</td>
+      <td>BROOKLYN CENTER</td>
+      <td>MINNESOTA</td>
+      <td>5620 BROOKLYN BOULEVARD</td>
+      <td>Minneapolis-St. Paul-Bloomington, MN-WI</td>
+      <td>33460</td>
+      <td>3511</td>
+      <td>HENNEPIN</td>
+      <td>2239</td>
+      <td>BROOKDALE BRANCH</td>
+      <td>10468</td>
+      <td>09/04/2019</td>
+      <td>11</td>
+      <td>MN</td>
+      <td>27053</td>
+      <td>616488</td>
+      <td>55429</td>
+    </tr>
+  </tbody>
+</table>
+<p>88820 rows × 17 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Transform-Institutions-DF">Transform Institutions DF<a class="anchor-link" href="#Transform-Institutions-DF">&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Drop,-fill,-rearrenge">Drop, fill, rearrenge<a class="anchor-link" href="#Drop,-fill,-rearrenge">&#182;</a></h2>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data10_df</span><span class="o">.</span><span class="n">dtypes</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Display DF</span>
+<span class="n">institutions_df</span>
 </pre></div>
 
     </div>
@@ -13504,58 +14151,6 @@ memory usage: 3.4+ KB
 
 
 
-
-<div class="output_text output_subarea output_execute_result">
-<pre>FISCAL_YEAR              int64
-STATE                   object
-COMPANY                 object
-ASSETS_MILLIONS         object
-LIABILITIES_MILLIONS    object
-COURT_DISTRICT          object
-dtype: object</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Identify-columns-with-bad-data">Identify columns with bad data<a class="anchor-link" href="#Identify-columns-with-bad-data">&#182;</a></h2>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data10_df</span><span class="p">[</span><span class="n">data10_df</span><span class="p">[</span><span class="s1">&#39;COMPANY&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Spongetech Delivery Systems, Inc.&#39;</span><span class="p">]</span>
-
-<span class="c1"># Kore Holdings, Inc.</span>
-<span class="c1"># Bridgetech Holdings International, Inc.</span>
-<span class="c1"># Java Detour, Inc.</span>
-<span class="c1"># Law Enforcement Associates Corporation</span>
-<span class="c1"># Sand Spring Capital</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[9]:</div>
-
-
-
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
 <style scoped>
@@ -13575,29 +14170,1816 @@ dtype: object</pre>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>FISCAL_YEAR</th>
-      <th>STATE</th>
-      <th>COMPANY</th>
-      <th>ASSETS_MILLIONS</th>
-      <th>LIABILITIES_MILLIONS</th>
-      <th>COURT_DISTRICT</th>
+      <th>STNAME</th>
+      <th>CERT</th>
+      <th>DOCKET</th>
+      <th>ACTIVE</th>
+      <th>ADDRESS</th>
+      <th>ASSET</th>
+      <th>BKCLASS</th>
+      <th>CHANGEC1</th>
+      <th>CHANGEC2</th>
+      <th>CHANGEC3</th>
+      <th>CHANGEC4</th>
+      <th>CHANGEC5</th>
+      <th>CHANGEC6</th>
+      <th>CHANGEC7</th>
+      <th>CHANGEC8</th>
+      <th>CHANGEC9</th>
+      <th>CHANGEC10</th>
+      <th>CHANGEC11</th>
+      <th>CHANGEC12</th>
+      <th>CHANGEC13</th>
+      <th>CHANGEC14</th>
+      <th>CHANGEC15</th>
+      <th>CHARTER</th>
+      <th>CHRTAGNT</th>
+      <th>CONSERVE</th>
+      <th>CITY</th>
+      <th>CLCODE</th>
+      <th>CMSA_NO</th>
+      <th>CMSA</th>
+      <th>COUNTY</th>
+      <th>DATEUPDT</th>
+      <th>DENOVO</th>
+      <th>DEP</th>
+      <th>EFFDATE</th>
+      <th>ENDEFYMD</th>
+      <th>EQ</th>
+      <th>ESTYMD</th>
+      <th>FDICDBS</th>
+      <th>FDICREGN</th>
+      <th>FDICSUPV</th>
+      <th>FED</th>
+      <th>FED_RSSD</th>
+      <th>FEDCHRTR</th>
+      <th>FLDOFF</th>
+      <th>IBA</th>
+      <th>INACTIVE</th>
+      <th>INSAGNT1</th>
+      <th>INSAGNT2</th>
+      <th>INSDATE</th>
+      <th>INSTCRCD</th>
+      <th>INSBIF</th>
+      <th>INSCOML</th>
+      <th>INSDIF</th>
+      <th>INSFDIC</th>
+      <th>INSSAIF</th>
+      <th>INSSAVE</th>
+      <th>MSA_NO</th>
+      <th>MSA</th>
+      <th>NAME</th>
+      <th>NEWCERT</th>
+      <th>OAKAR</th>
+      <th>OTSDIST</th>
+      <th>OTSREGNM</th>
+      <th>PROCDATE</th>
+      <th>QBPRCOML</th>
+      <th>REGAGNT</th>
+      <th>REPDTE</th>
+      <th>RISDATE</th>
+      <th>STCHRTR</th>
+      <th>ROA</th>
+      <th>ROAQ</th>
+      <th>ROE</th>
+      <th>ROEQ</th>
+      <th>RUNDATE</th>
+      <th>SASSER</th>
+      <th>LAW_SASSER_FLG</th>
+      <th>STALP</th>
+      <th>STCNTY</th>
+      <th>STNUM</th>
+      <th>ZIP</th>
+      <th>SUPRV_FD</th>
+      <th>OCCDIST</th>
+      <th>UNINUM</th>
+      <th>ULTCERT</th>
+      <th>CFPBEFFDTE</th>
+      <th>CFPBENDDTE</th>
+      <th>CFPBFLAG</th>
+      <th>REGAGENT2</th>
+      <th>TE01N528</th>
+      <th>TE02N528</th>
+      <th>TE03N528</th>
+      <th>TE04N528</th>
+      <th>TE05N528</th>
+      <th>TE06N528</th>
+      <th>TE07N528</th>
+      <th>TE08N528</th>
+      <th>TE09N528</th>
+      <th>TE10N528</th>
+      <th>TE01N529</th>
+      <th>TE02N529</th>
+      <th>TE03N529</th>
+      <th>TE04N529</th>
+      <th>TE05N529</th>
+      <th>TE06N529</th>
+      <th>WEBADDR</th>
+      <th>OFFICES</th>
+      <th>CERTCONS</th>
+      <th>PARCERT</th>
+      <th>CITYHCR</th>
+      <th>DEPDOM</th>
+      <th>FORM31</th>
+      <th>HCTMULT</th>
+      <th>INSTAG</th>
+      <th>MUTUAL</th>
+      <th>NAMEHCR</th>
+      <th>NETINC</th>
+      <th>NETINCQ</th>
+      <th>OFFDOM</th>
+      <th>OFFFOR</th>
+      <th>OFFOA</th>
+      <th>RSSDHCR</th>
+      <th>STALPHCR</th>
+      <th>STMULT</th>
+      <th>SUBCHAPS</th>
+      <th>ROAPTX</th>
+      <th>ROAPTXQ</th>
+      <th>TRUST</th>
+      <th>SPECGRP</th>
+      <th>SPECGRPN</th>
+      <th>TRACT</th>
+      <th>CSA</th>
+      <th>CSA_NO</th>
+      <th>CSA_FLG</th>
+      <th>CBSA</th>
+      <th>CBSA_NO</th>
+      <th>CBSA_METRO_NAME</th>
+      <th>CBSA_METRO</th>
+      <th>CBSA_METRO_FLG</th>
+      <th>CBSA_MICRO_FLG</th>
+      <th>CBSA_DIV</th>
+      <th>CBSA_DIV_NO</th>
+      <th>CBSA_DIV_FLG</th>
+      <th>CB</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>51</th>
-      <td>2010</td>
-      <td>NY</td>
-      <td>Spongetech Delivery Systems, Inc.</td>
-      <td>0.50</td>
-      <td>----</td>
-      <td>SD</td>
+      <td>0</td>
+      <td>PENNSYLVANIA</td>
+      <td>15698</td>
+      <td>0</td>
+      <td>0</td>
+      <td>401 WEST LANCASTER AVENUE</td>
+      <td>NaN</td>
+      <td>SB</td>
+      <td>213</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>STATE</td>
+      <td>N</td>
+      <td>HAVERFORD</td>
+      <td>42</td>
+      <td>77</td>
+      <td>Philadelphia-Wilmington-Atlantic City, PA-NJ-D...</td>
+      <td>MONTGOMERY</td>
+      <td>04/07/1982</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>04/03/1982</td>
+      <td>04/03/1982</td>
+      <td>NaN</td>
+      <td>01/01/1847</td>
+      <td>2</td>
+      <td>NEW YORK</td>
+      <td>NEW YORK</td>
+      <td>3</td>
+      <td>897116</td>
+      <td>0</td>
+      <td>PHILADELPHIA</td>
+      <td>0</td>
+      <td>1</td>
+      <td>BIF</td>
+      <td>NaN</td>
+      <td>11/21/1939</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>6160</td>
+      <td>Philadelphia, PA-NJ PMSA</td>
+      <td>The Western Saving Fund Society of Philadelphia</td>
+      <td>15750</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NORTHEAST</td>
+      <td>04/07/1982</td>
+      <td>1</td>
+      <td>FDIC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>09/04/2019</td>
+      <td>0</td>
+      <td>N</td>
+      <td>PA</td>
+      <td>42091</td>
+      <td>42</td>
+      <td>19041</td>
+      <td>2</td>
+      <td>1</td>
+      <td>9966</td>
+      <td>7946</td>
+      <td>31-Dec-9999</td>
+      <td>31-Dec-9999</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Error in Specialization Group</td>
+      <td>NaN</td>
+      <td>Philadelphia-Reading-Camden, PA-NJ-DE-MD</td>
+      <td>428</td>
+      <td>1</td>
+      <td>Philadelphia-Camden-Wilmington, PA-NJ-DE-MD</td>
+      <td>37980</td>
+      <td>Philadelphia-Camden-Wilmington, PA-NJ-DE-MD</td>
+      <td>37980</td>
+      <td>1</td>
+      <td>0</td>
+      <td>Montgomery County-Bucks County-Chester County, PA</td>
+      <td>33874</td>
+      <td>1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>SOUTH CAROLINA</td>
+      <td>15716</td>
+      <td>0</td>
+      <td>0</td>
+      <td>MAIN STREET</td>
+      <td>5045</td>
+      <td>NM</td>
+      <td>223</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>STATE</td>
+      <td>N</td>
+      <td>SUMMERTON</td>
+      <td>21</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>CLARENDON</td>
+      <td>10/23/1985</td>
+      <td>0</td>
+      <td>4412</td>
+      <td>09/16/1985</td>
+      <td>09/16/1985</td>
+      <td>585</td>
+      <td>09/11/1934</td>
+      <td>5</td>
+      <td>ATLANTA</td>
+      <td>ATLANTA</td>
+      <td>5</td>
+      <td>577221</td>
+      <td>0</td>
+      <td>COLUMBIA SC</td>
+      <td>0</td>
+      <td>1</td>
+      <td>BIF</td>
+      <td>NaN</td>
+      <td>01/15/1940</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>Bank of Summerton</td>
+      <td>2111</td>
+      <td>0</td>
+      <td>2</td>
+      <td>SOUTHEAST</td>
+      <td>10/23/1985</td>
+      <td>2</td>
+      <td>FDIC</td>
+      <td>06/30/1985</td>
+      <td>06/30/1985</td>
+      <td>1</td>
+      <td>2.08</td>
+      <td>3.42</td>
+      <td>19.09</td>
+      <td>30.52</td>
+      <td>09/04/2019</td>
+      <td>0</td>
+      <td>N</td>
+      <td>SC</td>
+      <td>45027</td>
+      <td>45</td>
+      <td>29148</td>
+      <td>5</td>
+      <td>1</td>
+      <td>9979</td>
+      <td>873</td>
+      <td>31-Dec-9999</td>
+      <td>31-Dec-9999</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4412</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>52</td>
+      <td>43</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2.45</td>
+      <td>4.05</td>
+      <td>1</td>
+      <td>7</td>
+      <td>Other Specialized Under 1 Billion</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>TEXAS</td>
+      <td>15721</td>
+      <td>0</td>
+      <td>0</td>
+      <td>823 CONGRESS AVENUE</td>
+      <td>345518</td>
+      <td>N</td>
+      <td>211</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>14728</td>
+      <td>OCC</td>
+      <td>N</td>
+      <td>AUSTIN</td>
+      <td>3</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>TRAVIS</td>
+      <td>11/03/1992</td>
+      <td>0</td>
+      <td>331568</td>
+      <td>10/30/1992</td>
+      <td>10/30/1992</td>
+      <td>6972</td>
+      <td>06/05/1936</td>
+      <td>13</td>
+      <td>DALLAS</td>
+      <td>DALLAS</td>
+      <td>11</td>
+      <td>7353</td>
+      <td>1</td>
+      <td>AUSTIN</td>
+      <td>0</td>
+      <td>1</td>
+      <td>BIF</td>
+      <td>NaN</td>
+      <td>02/21/1940</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>640</td>
+      <td>Austin-San Marcos, TX MSA</td>
+      <td>First City, Texas - Austin, National Association</td>
+      <td>33714</td>
+      <td>0</td>
+      <td>5</td>
+      <td>WEST</td>
+      <td>11/03/1992</td>
+      <td>5</td>
+      <td>OCC</td>
+      <td>09/30/1992</td>
+      <td>09/30/1992</td>
+      <td>0</td>
+      <td>-2.07</td>
+      <td>-0.45</td>
+      <td>-91.84</td>
+      <td>-22.36</td>
+      <td>09/04/2019</td>
+      <td>0</td>
+      <td>N</td>
+      <td>TX</td>
+      <td>48453</td>
+      <td>48</td>
+      <td>78767</td>
+      <td>13</td>
+      <td>5</td>
+      <td>9983</td>
+      <td>5510</td>
+      <td>31-Dec-9999</td>
+      <td>31-Dec-9999</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>HOUSTON</td>
+      <td>331568</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>FIRST CITY BANCORPORATION OF TEXAS, INC.</td>
+      <td>-5930</td>
+      <td>-401</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1249338</td>
+      <td>TX</td>
+      <td>0</td>
+      <td>0</td>
+      <td>-2.05</td>
+      <td>-0.44</td>
+      <td>1</td>
+      <td>4</td>
+      <td>Commercial Lending Specialization</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Austin-Round Rock, TX</td>
+      <td>12420</td>
+      <td>Austin-Round Rock, TX</td>
+      <td>12420</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>IOWA</td>
+      <td>15736</td>
+      <td>0</td>
+      <td>0</td>
+      <td>606 WEST MILWAUKEE</td>
+      <td>206135</td>
+      <td>SM</td>
+      <td>223</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>STATE</td>
+      <td>N</td>
+      <td>NEW HAMPTON</td>
+      <td>13</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>CHICKASAW</td>
+      <td>04/07/2011</td>
+      <td>0</td>
+      <td>188024</td>
+      <td>03/31/2011</td>
+      <td>03/31/2011</td>
+      <td>16414</td>
+      <td>06/16/1937</td>
+      <td>11</td>
+      <td>KANSAS CITY</td>
+      <td>KANSAS CITY</td>
+      <td>7</td>
+      <td>668848</td>
+      <td>0</td>
+      <td>CEDAR RAPIDS</td>
+      <td>0</td>
+      <td>1</td>
+      <td>DIF</td>
+      <td>NaN</td>
+      <td>04/15/1940</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>BANK IOWA</td>
+      <td>14521</td>
+      <td>0</td>
+      <td>4</td>
+      <td>WESTERN</td>
+      <td>04/07/2011</td>
+      <td>4</td>
+      <td>FED</td>
+      <td>12/31/2010</td>
+      <td>12/31/2010</td>
+      <td>1</td>
+      <td>1.09</td>
+      <td>0.75</td>
+      <td>13.58</td>
+      <td>9.09</td>
+      <td>09/04/2019</td>
+      <td>0</td>
+      <td>N</td>
+      <td>IA</td>
+      <td>19037</td>
+      <td>19</td>
+      <td>50659</td>
+      <td>11</td>
+      <td>4</td>
+      <td>9992</td>
+      <td>14521</td>
+      <td>31-Dec-9999</td>
+      <td>31-Dec-9999</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>http://www.bankiowabanks.com/lawler</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>WEST DES MOINES</td>
+      <td>188024</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>BANK IOWA CORPORATION</td>
+      <td>2193</td>
+      <td>378</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1202762</td>
+      <td>IA</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.13</td>
+      <td>0.76</td>
+      <td>1</td>
+      <td>2</td>
+      <td>Agricultural Specialization</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>IOWA</td>
+      <td>15368</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1306  18TH STREET</td>
+      <td>38799</td>
+      <td>SM</td>
+      <td>223</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>STATE</td>
+      <td>N</td>
+      <td>SPIRIT LAKE</td>
+      <td>13</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>DICKINSON</td>
+      <td>01/31/2003</td>
+      <td>0</td>
+      <td>26764</td>
+      <td>10/28/2002</td>
+      <td>10/28/2002</td>
+      <td>2615</td>
+      <td>01/01/1935</td>
+      <td>11</td>
+      <td>KANSAS CITY</td>
+      <td>KANSAS CITY</td>
+      <td>7</td>
+      <td>810142</td>
+      <td>0</td>
+      <td>SIOUX CITY</td>
+      <td>0</td>
+      <td>1</td>
+      <td>BIF</td>
+      <td>NaN</td>
+      <td>03/24/1936</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>Security State Bank</td>
+      <td>15555</td>
+      <td>0</td>
+      <td>4</td>
+      <td>WESTERN</td>
+      <td>01/31/2003</td>
+      <td>4</td>
+      <td>FED</td>
+      <td>09/30/2002</td>
+      <td>09/30/2002</td>
+      <td>1</td>
+      <td>3.27</td>
+      <td>-0.05</td>
+      <td>46.44</td>
+      <td>-0.68</td>
+      <td>09/04/2019</td>
+      <td>0</td>
+      <td>N</td>
+      <td>IA</td>
+      <td>19059</td>
+      <td>19</td>
+      <td>51360</td>
+      <td>11</td>
+      <td>4</td>
+      <td>9695</td>
+      <td>15555</td>
+      <td>31-Dec-9999</td>
+      <td>31-Dec-9999</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>WWW.CENTRALBANKFDIC.COM</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>STORM LAKE</td>
+      <td>26764</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>COMMERCIAL FINANCIAL CORP</td>
+      <td>1059</td>
+      <td>-5</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1978674</td>
+      <td>IA</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5.44</td>
+      <td>0.71</td>
+      <td>1</td>
+      <td>4</td>
+      <td>Commercial Lending Specialization</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Spirit Lake, IA</td>
+      <td>44020</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>27610</td>
+      <td>ALABAMA</td>
+      <td>5598</td>
+      <td>9810</td>
+      <td>1</td>
+      <td>1000 HIGHWAY 231 SOUTH</td>
+      <td>912723</td>
+      <td>NM</td>
+      <td>810</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>STATE</td>
+      <td>N</td>
+      <td>TROY</td>
+      <td>21</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>PIKE</td>
+      <td>09/24/2008</td>
+      <td>0</td>
+      <td>777333</td>
+      <td>07/01/2008</td>
+      <td>12/31/9999</td>
+      <td>107713</td>
+      <td>01/01/1906</td>
+      <td>5</td>
+      <td>ATLANTA</td>
+      <td>ATLANTA</td>
+      <td>6</td>
+      <td>134437</td>
+      <td>0</td>
+      <td>MONTGOMERY</td>
+      <td>0</td>
+      <td>0</td>
+      <td>DIF</td>
+      <td>NaN</td>
+      <td>01/01/1934</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>Troy Bank &amp; Trust Company</td>
+      <td>5598</td>
+      <td>0</td>
+      <td>2</td>
+      <td>SOUTHEAST</td>
+      <td>09/24/2008</td>
+      <td>2</td>
+      <td>FDIC</td>
+      <td>03/31/2019</td>
+      <td>03/31/2019</td>
+      <td>1</td>
+      <td>0.96</td>
+      <td>0.96</td>
+      <td>8.07</td>
+      <td>8.07</td>
+      <td>09/04/2019</td>
+      <td>0</td>
+      <td>N</td>
+      <td>AL</td>
+      <td>01109</td>
+      <td>1</td>
+      <td>36081</td>
+      <td>5</td>
+      <td>5</td>
+      <td>3811</td>
+      <td>5598</td>
+      <td>31-Dec-9999</td>
+      <td>31-Dec-9999</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>http://www.troybankandtrust.com</td>
+      <td>11</td>
+      <td>0</td>
+      <td>0</td>
+      <td>TROY</td>
+      <td>777333</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>TRUST NO. 3 UNDER THE WILL OF CHARLES HENDERSON</td>
+      <td>2146</td>
+      <td>2146</td>
+      <td>11</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1080139</td>
+      <td>AL</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1.19</td>
+      <td>1.19</td>
+      <td>1</td>
+      <td>4</td>
+      <td>Commercial Lending Specialization</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Troy, AL</td>
+      <td>45980</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>27611</td>
+      <td>OKLAHOMA</td>
+      <td>18924</td>
+      <td>0</td>
+      <td>1</td>
+      <td>206 S MAIN ST</td>
+      <td>12885</td>
+      <td>NM</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>STATE</td>
+      <td>N</td>
+      <td>ELMORE CITY</td>
+      <td>21</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>GARVIN</td>
+      <td>03/19/2019</td>
+      <td>0</td>
+      <td>8788</td>
+      <td>12/31/2018</td>
+      <td>12/31/9999</td>
+      <td>1812</td>
+      <td>01/01/1903</td>
+      <td>13</td>
+      <td>DALLAS</td>
+      <td>DALLAS</td>
+      <td>10</td>
+      <td>116554</td>
+      <td>0</td>
+      <td>OKLAHOMA CITY</td>
+      <td>0</td>
+      <td>0</td>
+      <td>DIF</td>
+      <td>NaN</td>
+      <td>10/24/1963</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>First State Bank</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>WEST</td>
+      <td>03/19/2019</td>
+      <td>5</td>
+      <td>FDIC</td>
+      <td>03/31/2019</td>
+      <td>03/31/2019</td>
+      <td>1</td>
+      <td>2.88</td>
+      <td>2.88</td>
+      <td>21.56</td>
+      <td>21.56</td>
+      <td>09/04/2019</td>
+      <td>0</td>
+      <td>N</td>
+      <td>OK</td>
+      <td>40049</td>
+      <td>40</td>
+      <td>73433</td>
+      <td>13</td>
+      <td>5</td>
+      <td>12771</td>
+      <td>18924</td>
+      <td>31-Dec-9999</td>
+      <td>31-Dec-9999</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>fsbec.com</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>OKLAHOMA CITY</td>
+      <td>8788</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>BLUECHIP BANCSHARES, LLC</td>
+      <td>95</td>
+      <td>95</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4349837</td>
+      <td>OK</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2.88</td>
+      <td>2.88</td>
+      <td>0</td>
+      <td>4</td>
+      <td>Commercial Lending Specialization</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>27612</td>
+      <td>OHIO</td>
+      <td>6540</td>
+      <td>13123</td>
+      <td>1</td>
+      <td>20 SOUTH BROAD STREET</td>
+      <td>2335841</td>
+      <td>N</td>
+      <td>810</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3654</td>
+      <td>OCC</td>
+      <td>N</td>
+      <td>CANFIELD</td>
+      <td>3</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MAHONING</td>
+      <td>08/31/2017</td>
+      <td>0</td>
+      <td>1959300</td>
+      <td>08/16/2017</td>
+      <td>12/31/9999</td>
+      <td>254487</td>
+      <td>02/17/1887</td>
+      <td>9</td>
+      <td>CHICAGO</td>
+      <td>CHICAGO</td>
+      <td>4</td>
+      <td>680813</td>
+      <td>1</td>
+      <td>COLUMBUS</td>
+      <td>0</td>
+      <td>0</td>
+      <td>DIF</td>
+      <td>NaN</td>
+      <td>01/01/1934</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>9320</td>
+      <td>Youngstown-Warren, OH MSA</td>
+      <td>The Farmers National Bank of Canfield</td>
+      <td>6540</td>
+      <td>0</td>
+      <td>3</td>
+      <td>CENTRAL</td>
+      <td>08/31/2017</td>
+      <td>3</td>
+      <td>OCC</td>
+      <td>03/31/2019</td>
+      <td>03/31/2019</td>
+      <td>0</td>
+      <td>1.38</td>
+      <td>1.38</td>
+      <td>12.85</td>
+      <td>12.85</td>
+      <td>09/04/2019</td>
+      <td>0</td>
+      <td>N</td>
+      <td>OH</td>
+      <td>39099</td>
+      <td>39</td>
+      <td>44406</td>
+      <td>9</td>
+      <td>3</td>
+      <td>4377</td>
+      <td>6540</td>
+      <td>31-Dec-9999</td>
+      <td>31-Dec-9999</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>http://www.farmersbankgroup.com</td>
+      <td>39</td>
+      <td>0</td>
+      <td>0</td>
+      <td>CANFIELD</td>
+      <td>1959300</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>FARMERS NATIONAL BANC CORP.</td>
+      <td>8016</td>
+      <td>8016</td>
+      <td>39</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1071191</td>
+      <td>OH</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1.65</td>
+      <td>1.65</td>
+      <td>0</td>
+      <td>4</td>
+      <td>Commercial Lending Specialization</td>
+      <td>0</td>
+      <td>Youngstown-Warren, OH-PA</td>
+      <td>566</td>
+      <td>1</td>
+      <td>Youngstown-Warren-Boardman, OH-PA</td>
+      <td>49660</td>
+      <td>Youngstown-Warren-Boardman, OH-PA</td>
+      <td>49660</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>27613</td>
+      <td>CALIFORNIA</td>
+      <td>57591</td>
+      <td>0</td>
+      <td>1</td>
+      <td>75 RIVER STREET</td>
+      <td>668098</td>
+      <td>NM</td>
+      <td>520</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>STATE</td>
+      <td>N</td>
+      <td>SANTA CRUZ</td>
+      <td>21</td>
+      <td>84</td>
+      <td>San Francisco-Oakland-San Jose, CA CMSA</td>
+      <td>SANTA CRUZ</td>
+      <td>09/11/2018</td>
+      <td>0</td>
+      <td>581734</td>
+      <td>09/04/2018</td>
+      <td>12/31/9999</td>
+      <td>71466</td>
+      <td>02/03/2004</td>
+      <td>14</td>
+      <td>SAN FRANCISCO</td>
+      <td>SAN FRANCISCO</td>
+      <td>12</td>
+      <td>3235410</td>
+      <td>0</td>
+      <td>SAN FRANCISCO</td>
+      <td>0</td>
+      <td>0</td>
+      <td>DIF</td>
+      <td>NaN</td>
+      <td>02/03/2004</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>7485</td>
+      <td>Santa Cruz-Watsonville, CA PMSA</td>
+      <td>Santa Cruz County Bank</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>WESTERN</td>
+      <td>09/11/2018</td>
+      <td>6</td>
+      <td>FDIC</td>
+      <td>03/31/2019</td>
+      <td>03/31/2019</td>
+      <td>1</td>
+      <td>1.78</td>
+      <td>1.78</td>
+      <td>16.94</td>
+      <td>16.94</td>
+      <td>09/04/2019</td>
+      <td>0</td>
+      <td>N</td>
+      <td>CA</td>
+      <td>06087</td>
+      <td>6</td>
+      <td>95060</td>
+      <td>14</td>
+      <td>4</td>
+      <td>366199</td>
+      <td>57591</td>
+      <td>31-Dec-9999</td>
+      <td>31-Dec-9999</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>http://www.sccountybank.com</td>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>581734</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2965</td>
+      <td>2965</td>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2.5</td>
+      <td>2.5</td>
+      <td>0</td>
+      <td>4</td>
+      <td>Commercial Lending Specialization</td>
+      <td>0</td>
+      <td>San Jose-San Francisco-Oakland, CA</td>
+      <td>488</td>
+      <td>1</td>
+      <td>Santa Cruz-Watsonville, CA</td>
+      <td>42100</td>
+      <td>Santa Cruz-Watsonville, CA</td>
+      <td>42100</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>27614</td>
+      <td>FLORIDA</td>
+      <td>58376</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3003 TAMAIMI TRAIL</td>
+      <td>391634</td>
+      <td>NM</td>
+      <td>240</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>STATE</td>
+      <td>N</td>
+      <td>NAPLES</td>
+      <td>21</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>COLLIER</td>
+      <td>04/27/2018</td>
+      <td>0</td>
+      <td>343570</td>
+      <td>04/20/2018</td>
+      <td>04/20/2018</td>
+      <td>40829</td>
+      <td>06/04/2007</td>
+      <td>5</td>
+      <td>ATLANTA</td>
+      <td>ATLANTA</td>
+      <td>6</td>
+      <td>3603457</td>
+      <td>0</td>
+      <td>SOUTH FLORIDA</td>
+      <td>0</td>
+      <td>1</td>
+      <td>DIF</td>
+      <td>NaN</td>
+      <td>06/04/2007</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>5345</td>
+      <td>Naples, FL MSA</td>
+      <td>Encore  Bank</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>SOUTHEAST</td>
+      <td>04/27/2018</td>
+      <td>2</td>
+      <td>FDIC</td>
+      <td>03/31/2018</td>
+      <td>03/31/2018</td>
+      <td>1</td>
+      <td>1.08</td>
+      <td>1.08</td>
+      <td>10.34</td>
+      <td>10.34</td>
+      <td>09/04/2019</td>
+      <td>0</td>
+      <td>N</td>
+      <td>FL</td>
+      <td>12021</td>
+      <td>12</td>
+      <td>34103</td>
+      <td>5</td>
+      <td>5</td>
+      <td>448927</td>
+      <td>58376</td>
+      <td>31-Dec-9999</td>
+      <td>31-Dec-9999</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>www.encorebank.com</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NAPLES</td>
+      <td>343570</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>OVATION HOLDINGS, INC.</td>
+      <td>1046</td>
+      <td>1046</td>
+      <td>7</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4114884</td>
+      <td>FL</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1.43</td>
+      <td>1.43</td>
+      <td>0</td>
+      <td>4</td>
+      <td>Commercial Lending Specialization</td>
+      <td>0</td>
+      <td>Cape Coral-Fort Myers-Naples, FL</td>
+      <td>162</td>
+      <td>1</td>
+      <td>Naples-Immokalee-Marco Island, FL</td>
+      <td>34940</td>
+      <td>Naples-Immokalee-Marco Island, FL</td>
+      <td>34940</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
     </tr>
   </tbody>
 </table>
+<p>27615 rows × 143 columns</p>
 </div>
 </div>
 
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Print all columns names</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">institutions_df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;STNAME&#39; &#39;CERT&#39; &#39;DOCKET&#39; &#39;ACTIVE&#39; &#39;ADDRESS&#39; &#39;ASSET&#39; &#39;BKCLASS&#39; &#39;CHANGEC1&#39;
+ &#39;CHANGEC2&#39; &#39;CHANGEC3&#39; &#39;CHANGEC4&#39; &#39;CHANGEC5&#39; &#39;CHANGEC6&#39; &#39;CHANGEC7&#39;
+ &#39;CHANGEC8&#39; &#39;CHANGEC9&#39; &#39;CHANGEC10&#39; &#39;CHANGEC11&#39; &#39;CHANGEC12&#39; &#39;CHANGEC13&#39;
+ &#39;CHANGEC14&#39; &#39;CHANGEC15&#39; &#39;CHARTER&#39; &#39;CHRTAGNT&#39; &#39;CONSERVE&#39; &#39;CITY&#39; &#39;CLCODE&#39;
+ &#39;CMSA_NO&#39; &#39;CMSA&#39; &#39;COUNTY&#39; &#39;DATEUPDT&#39; &#39;DENOVO&#39; &#39;DEP&#39; &#39;EFFDATE&#39; &#39;ENDEFYMD&#39;
+ &#39;EQ&#39; &#39;ESTYMD&#39; &#39;FDICDBS&#39; &#39;FDICREGN&#39; &#39;FDICSUPV&#39; &#39;FED&#39; &#39;FED_RSSD&#39; &#39;FEDCHRTR&#39;
+ &#39;FLDOFF&#39; &#39;IBA&#39; &#39;INACTIVE&#39; &#39;INSAGNT1&#39; &#39;INSAGNT2&#39; &#39;INSDATE&#39; &#39;INSTCRCD&#39;
+ &#39;INSBIF&#39; &#39;INSCOML&#39; &#39;INSDIF&#39; &#39;INSFDIC&#39; &#39;INSSAIF&#39; &#39;INSSAVE&#39; &#39;MSA_NO&#39; &#39;MSA&#39;
+ &#39;NAME&#39; &#39;NEWCERT&#39; &#39;OAKAR&#39; &#39;OTSDIST&#39; &#39;OTSREGNM&#39; &#39;PROCDATE&#39; &#39;QBPRCOML&#39;
+ &#39;REGAGNT&#39; &#39;REPDTE&#39; &#39;RISDATE&#39; &#39;STCHRTR&#39; &#39;ROA&#39; &#39;ROAQ&#39; &#39;ROE&#39; &#39;ROEQ&#39;
+ &#39;RUNDATE&#39; &#39;SASSER&#39; &#39;LAW_SASSER_FLG&#39; &#39;STALP&#39; &#39;STCNTY&#39; &#39;STNUM&#39; &#39;ZIP&#39;
+ &#39;SUPRV_FD&#39; &#39;OCCDIST&#39; &#39;UNINUM&#39; &#39;ULTCERT&#39; &#39;CFPBEFFDTE&#39; &#39;CFPBENDDTE&#39;
+ &#39;CFPBFLAG&#39; &#39;REGAGENT2&#39; &#39;TE01N528&#39; &#39;TE02N528&#39; &#39;TE03N528&#39; &#39;TE04N528&#39;
+ &#39;TE05N528&#39; &#39;TE06N528&#39; &#39;TE07N528&#39; &#39;TE08N528&#39; &#39;TE09N528&#39; &#39;TE10N528&#39;
+ &#39;TE01N529&#39; &#39;TE02N529&#39; &#39;TE03N529&#39; &#39;TE04N529&#39; &#39;TE05N529&#39; &#39;TE06N529&#39;
+ &#39;WEBADDR&#39; &#39;OFFICES&#39; &#39;CERTCONS&#39; &#39;PARCERT&#39; &#39;CITYHCR&#39; &#39;DEPDOM&#39; &#39;FORM31&#39;
+ &#39;HCTMULT&#39; &#39;INSTAG&#39; &#39;MUTUAL&#39; &#39;NAMEHCR&#39; &#39;NETINC&#39; &#39;NETINCQ&#39; &#39;OFFDOM&#39;
+ &#39;OFFFOR&#39; &#39;OFFOA&#39; &#39;RSSDHCR&#39; &#39;STALPHCR&#39; &#39;STMULT&#39; &#39;SUBCHAPS&#39; &#39;ROAPTX&#39;
+ &#39;ROAPTXQ&#39; &#39;TRUST&#39; &#39;SPECGRP&#39; &#39;SPECGRPN&#39; &#39;TRACT&#39; &#39;CSA&#39; &#39;CSA_NO&#39; &#39;CSA_FLG&#39;
+ &#39;CBSA&#39; &#39;CBSA_NO&#39; &#39;CBSA_METRO_NAME&#39; &#39;CBSA_METRO&#39; &#39;CBSA_METRO_FLG&#39;
+ &#39;CBSA_MICRO_FLG&#39; &#39;CBSA_DIV&#39; &#39;CBSA_DIV_NO&#39; &#39;CBSA_DIV_FLG&#39; &#39;CB&#39;]
+</pre>
+</div>
 </div>
 
 </div>
@@ -13609,7 +15991,28 @@ dtype: object</pre>
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data11_df</span><span class="p">[</span><span class="n">data11_df</span><span class="p">[</span><span class="s1">&#39;COMPANY&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Bridgetech Holdings International, Inc.&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Drop unnessary columns</span>
+<span class="n">institutions_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CMSA_NO&#39;</span><span class="p">,</span><span class="s1">&#39;CMSA&#39;</span><span class="p">,</span><span class="s1">&#39;DOCKET&#39;</span><span class="p">,</span><span class="s1">&#39;ACTIVE&#39;</span><span class="p">,</span><span class="s1">&#39;CHANGEC2&#39;</span><span class="p">,</span><span class="s1">&#39;CHANGEC3&#39;</span><span class="p">,</span><span class="s1">&#39;CHANGEC4&#39;</span><span class="p">,</span><span class="s1">&#39;CHANGEC5&#39;</span><span class="p">,</span><span class="s1">&#39;CHANGEC6&#39;</span><span class="p">,</span>\
+                                                  <span class="s1">&#39;CHANGEC7&#39;</span><span class="p">,</span><span class="s1">&#39;CHANGEC8&#39;</span><span class="p">,</span><span class="s1">&#39;CHANGEC9&#39;</span><span class="p">,</span><span class="s1">&#39;CHANGEC10&#39;</span><span class="p">,</span><span class="s1">&#39;CHANGEC11&#39;</span><span class="p">,</span><span class="s1">&#39;CHANGEC12&#39;</span><span class="p">,</span><span class="s1">&#39;CHANGEC13&#39;</span><span class="p">,</span>\
+                                                  <span class="s1">&#39;CHANGEC14&#39;</span><span class="p">,</span><span class="s1">&#39;CHANGEC15&#39;</span><span class="p">,</span><span class="s1">&#39;CHARTER&#39;</span><span class="p">,</span><span class="s1">&#39;CHRTAGNT&#39;</span><span class="p">,</span><span class="s1">&#39;CONSERVE&#39;</span><span class="p">,</span><span class="s1">&#39;DENOVO&#39;</span><span class="p">,</span><span class="s1">&#39;FEDCHRTR&#39;</span><span class="p">,</span>\
+                                                  <span class="s1">&#39;FLDOFF&#39;</span><span class="p">,</span><span class="s1">&#39;IBA&#39;</span><span class="p">,</span><span class="s1">&#39;INACTIVE&#39;</span><span class="p">,</span><span class="s1">&#39;INSAGNT1&#39;</span><span class="p">,</span><span class="s1">&#39;INSAGNT2&#39;</span><span class="p">,</span><span class="s1">&#39;INSTCRCD&#39;</span><span class="p">,</span><span class="s1">&#39;INSBIF&#39;</span><span class="p">,</span><span class="s1">&#39;INSCOML&#39;</span><span class="p">,</span>\
+                                                  <span class="s1">&#39;INSDIF&#39;</span><span class="p">,</span><span class="s1">&#39;INSFDIC&#39;</span><span class="p">,</span><span class="s1">&#39;INSSAIF&#39;</span><span class="p">,</span><span class="s1">&#39;INSSAVE&#39;</span><span class="p">,</span><span class="s1">&#39;MSA_NO&#39;</span><span class="p">,</span><span class="s1">&#39;MSA&#39;</span><span class="p">,</span><span class="s1">&#39;NEWCERT&#39;</span><span class="p">,</span><span class="s1">&#39;OAKAR&#39;</span><span class="p">,</span><span class="s1">&#39;OTSDIST&#39;</span><span class="p">,</span>\
+                                                  <span class="s1">&#39;OTSREGNM&#39;</span><span class="p">,</span><span class="s1">&#39;PROCDATE&#39;</span><span class="p">,</span><span class="s1">&#39;QBPRCOML&#39;</span><span class="p">,</span><span class="s1">&#39;REGAGNT&#39;</span><span class="p">,</span><span class="s1">&#39;REPDTE&#39;</span><span class="p">,</span><span class="s1">&#39;RISDATE&#39;</span><span class="p">,</span><span class="s1">&#39;STCHRTR&#39;</span><span class="p">,</span><span class="s1">&#39;SASSER&#39;</span><span class="p">,</span>\
+                                                  <span class="s1">&#39;LAW_SASSER_FLG&#39;</span><span class="p">,</span><span class="s1">&#39;CFPBEFFDTE&#39;</span><span class="p">,</span><span class="s1">&#39;CFPBENDDTE&#39;</span><span class="p">,</span><span class="s1">&#39;CFPBFLAG&#39;</span><span class="p">,</span><span class="s1">&#39;REGAGENT2&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Print to verify drops</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">institutions_df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13622,81 +16025,27 @@ dtype: object</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[10]:</div>
+    <div class="prompt"></div>
 
 
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>FISCAL_YEAR</th>
-      <th>STATE</th>
-      <th>COMPANY</th>
-      <th>ASSETS_MILLIONS</th>
-      <th>LIABILITIES_MILLIONS</th>
-      <th>COURT_DISTRICT</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>10</th>
-      <td>2011</td>
-      <td>CA</td>
-      <td>Bridgetech Holdings International, Inc.</td>
-      <td>--</td>
-      <td>7</td>
-      <td>SD</td>
-    </tr>
-  </tbody>
-</table>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;STNAME&#39; &#39;CERT&#39; &#39;ADDRESS&#39; &#39;ASSET&#39; &#39;BKCLASS&#39; &#39;CHANGEC1&#39; &#39;CITY&#39; &#39;CLCODE&#39;
+ &#39;COUNTY&#39; &#39;DATEUPDT&#39; &#39;DEP&#39; &#39;EFFDATE&#39; &#39;ENDEFYMD&#39; &#39;EQ&#39; &#39;ESTYMD&#39; &#39;FDICDBS&#39;
+ &#39;FDICREGN&#39; &#39;FDICSUPV&#39; &#39;FED&#39; &#39;FED_RSSD&#39; &#39;INSDATE&#39; &#39;NAME&#39; &#39;ROA&#39; &#39;ROAQ&#39;
+ &#39;ROE&#39; &#39;ROEQ&#39; &#39;RUNDATE&#39; &#39;STALP&#39; &#39;STCNTY&#39; &#39;STNUM&#39; &#39;ZIP&#39; &#39;SUPRV_FD&#39;
+ &#39;OCCDIST&#39; &#39;UNINUM&#39; &#39;ULTCERT&#39; &#39;TE01N528&#39; &#39;TE02N528&#39; &#39;TE03N528&#39; &#39;TE04N528&#39;
+ &#39;TE05N528&#39; &#39;TE06N528&#39; &#39;TE07N528&#39; &#39;TE08N528&#39; &#39;TE09N528&#39; &#39;TE10N528&#39;
+ &#39;TE01N529&#39; &#39;TE02N529&#39; &#39;TE03N529&#39; &#39;TE04N529&#39; &#39;TE05N529&#39; &#39;TE06N529&#39;
+ &#39;WEBADDR&#39; &#39;OFFICES&#39; &#39;CERTCONS&#39; &#39;PARCERT&#39; &#39;CITYHCR&#39; &#39;DEPDOM&#39; &#39;FORM31&#39;
+ &#39;HCTMULT&#39; &#39;INSTAG&#39; &#39;MUTUAL&#39; &#39;NAMEHCR&#39; &#39;NETINC&#39; &#39;NETINCQ&#39; &#39;OFFDOM&#39;
+ &#39;OFFFOR&#39; &#39;OFFOA&#39; &#39;RSSDHCR&#39; &#39;STALPHCR&#39; &#39;STMULT&#39; &#39;SUBCHAPS&#39; &#39;ROAPTX&#39;
+ &#39;ROAPTXQ&#39; &#39;TRUST&#39; &#39;SPECGRP&#39; &#39;SPECGRPN&#39; &#39;TRACT&#39; &#39;CSA&#39; &#39;CSA_NO&#39; &#39;CSA_FLG&#39;
+ &#39;CBSA&#39; &#39;CBSA_NO&#39; &#39;CBSA_METRO_NAME&#39; &#39;CBSA_METRO&#39; &#39;CBSA_METRO_FLG&#39;
+ &#39;CBSA_MICRO_FLG&#39; &#39;CBSA_DIV&#39; &#39;CBSA_DIV_NO&#39; &#39;CBSA_DIV_FLG&#39; &#39;CB&#39;]
+</pre>
 </div>
 </div>
 
-</div>
-
-</div>
-</div>
-
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Drop-row-with-bad-data">Drop row with bad data<a class="anchor-link" href="#Drop-row-with-bad-data">&#182;</a></h2>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Drop rows with bad data</span>
-
-<span class="n">data10_df</span> <span class="o">=</span> <span class="n">data10_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;COMPANY&#39;</span><span class="p">)</span>
-<span class="n">data10_df</span> <span class="o">=</span> <span class="n">data10_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Spongetech Delivery Systems, Inc.&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">data10_df</span> <span class="o">=</span> <span class="n">data10_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Kore Holdings, Inc.&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">data10_df</span> <span class="o">=</span> <span class="n">data10_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;U.S. Dry Cleaning Services Corporation&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
-
-<span class="n">data10_df</span><span class="o">=</span> <span class="n">data10_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
 
@@ -13706,35 +16055,24 @@ dtype: object</pre>
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Drop rows with bad data</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Delete more columns using https://stackoverflow.com/questions/28538536/deleting-multiple-columns-based-on-column-names-in-pandas</span>
 
-<span class="n">data11_df</span> <span class="o">=</span> <span class="n">data11_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;COMPANY&#39;</span><span class="p">)</span>
-<span class="n">data11_df</span> <span class="o">=</span> <span class="n">data11_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Bridgetech Holdings International, Inc.&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">data11_df</span> <span class="o">=</span> <span class="n">data11_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Java Detour, Inc.&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">data11_df</span> <span class="o">=</span> <span class="n">data11_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Law Enforcement Associates Corporation&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">data11_df</span> <span class="o">=</span> <span class="n">data11_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Sand Spring Capital&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
-
-<span class="n">data11_df</span><span class="o">=</span> <span class="n">data11_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">institutions_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">institutions_df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">36</span><span class="p">:</span><span class="mi">91</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Check-deletion">Check deletion<a class="anchor-link" href="#Check-deletion">&#182;</a></h2>
-</div>
-</div>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data10_df</span><span class="p">[</span><span class="n">data10_df</span><span class="p">[</span><span class="s1">&#39;COMPANY&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Spongetech Delivery Systems, Inc.&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Replace NAN values with 0</span>
+<span class="n">institutions_df</span> <span class="o">=</span> <span class="n">institutions_df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">institutions_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -13770,15 +16108,240 @@ dtype: object</pre>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>COMPANY</th>
-      <th>FISCAL_YEAR</th>
-      <th>STATE</th>
-      <th>ASSETS_MILLIONS</th>
-      <th>LIABILITIES_MILLIONS</th>
-      <th>COURT_DISTRICT</th>
+      <th>STNAME</th>
+      <th>CERT</th>
+      <th>ADDRESS</th>
+      <th>ASSET</th>
+      <th>BKCLASS</th>
+      <th>CHANGEC1</th>
+      <th>CITY</th>
+      <th>CLCODE</th>
+      <th>COUNTY</th>
+      <th>DATEUPDT</th>
+      <th>DEP</th>
+      <th>EFFDATE</th>
+      <th>ENDEFYMD</th>
+      <th>EQ</th>
+      <th>ESTYMD</th>
+      <th>FDICDBS</th>
+      <th>FDICREGN</th>
+      <th>FDICSUPV</th>
+      <th>FED</th>
+      <th>FED_RSSD</th>
+      <th>INSDATE</th>
+      <th>NAME</th>
+      <th>ROA</th>
+      <th>ROAQ</th>
+      <th>ROE</th>
+      <th>ROEQ</th>
+      <th>RUNDATE</th>
+      <th>STALP</th>
+      <th>STCNTY</th>
+      <th>STNUM</th>
+      <th>ZIP</th>
+      <th>SUPRV_FD</th>
+      <th>OCCDIST</th>
+      <th>UNINUM</th>
+      <th>ULTCERT</th>
+      <th>TE01N528</th>
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td>0</td>
+      <td>PENNSYLVANIA</td>
+      <td>15698</td>
+      <td>401 WEST LANCASTER AVENUE</td>
+      <td>0</td>
+      <td>SB</td>
+      <td>213</td>
+      <td>HAVERFORD</td>
+      <td>42</td>
+      <td>MONTGOMERY</td>
+      <td>04/07/1982</td>
+      <td>0</td>
+      <td>04/03/1982</td>
+      <td>04/03/1982</td>
+      <td>0</td>
+      <td>01/01/1847</td>
+      <td>2</td>
+      <td>NEW YORK</td>
+      <td>NEW YORK</td>
+      <td>3</td>
+      <td>897116</td>
+      <td>11/21/1939</td>
+      <td>The Western Saving Fund Society of Philadelphia</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>09/04/2019</td>
+      <td>PA</td>
+      <td>42091</td>
+      <td>42</td>
+      <td>19041</td>
+      <td>2</td>
+      <td>1</td>
+      <td>9966</td>
+      <td>7946</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>SOUTH CAROLINA</td>
+      <td>15716</td>
+      <td>MAIN STREET</td>
+      <td>5045</td>
+      <td>NM</td>
+      <td>223</td>
+      <td>SUMMERTON</td>
+      <td>21</td>
+      <td>CLARENDON</td>
+      <td>10/23/1985</td>
+      <td>4412</td>
+      <td>09/16/1985</td>
+      <td>09/16/1985</td>
+      <td>585</td>
+      <td>09/11/1934</td>
+      <td>5</td>
+      <td>ATLANTA</td>
+      <td>ATLANTA</td>
+      <td>5</td>
+      <td>577221</td>
+      <td>01/15/1940</td>
+      <td>Bank of Summerton</td>
+      <td>2.08</td>
+      <td>3.42</td>
+      <td>19.09</td>
+      <td>30.52</td>
+      <td>09/04/2019</td>
+      <td>SC</td>
+      <td>45027</td>
+      <td>45</td>
+      <td>29148</td>
+      <td>5</td>
+      <td>1</td>
+      <td>9979</td>
+      <td>873</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>TEXAS</td>
+      <td>15721</td>
+      <td>823 CONGRESS AVENUE</td>
+      <td>345518</td>
+      <td>N</td>
+      <td>211</td>
+      <td>AUSTIN</td>
+      <td>3</td>
+      <td>TRAVIS</td>
+      <td>11/03/1992</td>
+      <td>331568</td>
+      <td>10/30/1992</td>
+      <td>10/30/1992</td>
+      <td>6972</td>
+      <td>06/05/1936</td>
+      <td>13</td>
+      <td>DALLAS</td>
+      <td>DALLAS</td>
+      <td>11</td>
+      <td>7353</td>
+      <td>02/21/1940</td>
+      <td>First City, Texas - Austin, National Association</td>
+      <td>-2.07</td>
+      <td>-0.45</td>
+      <td>-91.84</td>
+      <td>-22.36</td>
+      <td>09/04/2019</td>
+      <td>TX</td>
+      <td>48453</td>
+      <td>48</td>
+      <td>78767</td>
+      <td>13</td>
+      <td>5</td>
+      <td>9983</td>
+      <td>5510</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>IOWA</td>
+      <td>15736</td>
+      <td>606 WEST MILWAUKEE</td>
+      <td>206135</td>
+      <td>SM</td>
+      <td>223</td>
+      <td>NEW HAMPTON</td>
+      <td>13</td>
+      <td>CHICKASAW</td>
+      <td>04/07/2011</td>
+      <td>188024</td>
+      <td>03/31/2011</td>
+      <td>03/31/2011</td>
+      <td>16414</td>
+      <td>06/16/1937</td>
+      <td>11</td>
+      <td>KANSAS CITY</td>
+      <td>KANSAS CITY</td>
+      <td>7</td>
+      <td>668848</td>
+      <td>04/15/1940</td>
+      <td>BANK IOWA</td>
+      <td>1.09</td>
+      <td>0.75</td>
+      <td>13.58</td>
+      <td>9.09</td>
+      <td>09/04/2019</td>
+      <td>IA</td>
+      <td>19037</td>
+      <td>19</td>
+      <td>50659</td>
+      <td>11</td>
+      <td>4</td>
+      <td>9992</td>
+      <td>14521</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>IOWA</td>
+      <td>15368</td>
+      <td>1306  18TH STREET</td>
+      <td>38799</td>
+      <td>SM</td>
+      <td>223</td>
+      <td>SPIRIT LAKE</td>
+      <td>13</td>
+      <td>DICKINSON</td>
+      <td>01/31/2003</td>
+      <td>26764</td>
+      <td>10/28/2002</td>
+      <td>10/28/2002</td>
+      <td>2615</td>
+      <td>01/01/1935</td>
+      <td>11</td>
+      <td>KANSAS CITY</td>
+      <td>KANSAS CITY</td>
+      <td>7</td>
+      <td>810142</td>
+      <td>03/24/1936</td>
+      <td>Security State Bank</td>
+      <td>3.27</td>
+      <td>-0.05</td>
+      <td>46.44</td>
+      <td>-0.68</td>
+      <td>09/04/2019</td>
+      <td>IA</td>
+      <td>19059</td>
+      <td>19</td>
+      <td>51360</td>
+      <td>11</td>
+      <td>4</td>
+      <td>9695</td>
+      <td>15555</td>
+      <td>0</td>
+    </tr>
   </tbody>
 </table>
 </div>
@@ -13795,7 +16358,8 @@ dtype: object</pre>
 <div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data11_df</span><span class="p">[</span><span class="n">data11_df</span><span class="p">[</span><span class="s1">&#39;COMPANY&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Bridgetech Holdings International, Inc.&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Print to verify columns name</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">institutions_df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13808,77 +16372,35 @@ dtype: object</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[14]:</div>
+    <div class="prompt"></div>
 
 
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>COMPANY</th>
-      <th>FISCAL_YEAR</th>
-      <th>STATE</th>
-      <th>ASSETS_MILLIONS</th>
-      <th>LIABILITIES_MILLIONS</th>
-      <th>COURT_DISTRICT</th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;STNAME&#39; &#39;CERT&#39; &#39;ADDRESS&#39; &#39;ASSET&#39; &#39;BKCLASS&#39; &#39;CHANGEC1&#39; &#39;CITY&#39; &#39;CLCODE&#39;
+ &#39;COUNTY&#39; &#39;DATEUPDT&#39; &#39;DEP&#39; &#39;EFFDATE&#39; &#39;ENDEFYMD&#39; &#39;EQ&#39; &#39;ESTYMD&#39; &#39;FDICDBS&#39;
+ &#39;FDICREGN&#39; &#39;FDICSUPV&#39; &#39;FED&#39; &#39;FED_RSSD&#39; &#39;INSDATE&#39; &#39;NAME&#39; &#39;ROA&#39; &#39;ROAQ&#39;
+ &#39;ROE&#39; &#39;ROEQ&#39; &#39;RUNDATE&#39; &#39;STALP&#39; &#39;STCNTY&#39; &#39;STNUM&#39; &#39;ZIP&#39; &#39;SUPRV_FD&#39;
+ &#39;OCCDIST&#39; &#39;UNINUM&#39; &#39;ULTCERT&#39; &#39;TE01N528&#39;]
+</pre>
 </div>
-</div>
-
 </div>
 
 </div>
 </div>
 
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="String-replace,-set-column-type">String replace, set column type<a class="anchor-link" href="#String-replace,-set-column-type">&#182;</a></h2>
-</div>
-</div>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data10_df</span><span class="p">[</span><span class="s1">&#39;ASSETS_MILLIONS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data10_df</span><span class="p">[</span><span class="s1">&#39;ASSETS_MILLIONS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="n">regex</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-<span class="n">data10_df</span><span class="p">[</span><span class="s1">&#39;LIABILITIES_MILLIONS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data10_df</span><span class="p">[</span><span class="s1">&#39;LIABILITIES_MILLIONS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="n">regex</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-</pre></div>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Rearrenge columns where I only care the first 3 </span>
 
-    </div>
-</div>
-</div>
-
-</div></section></section><section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data10_df</span><span class="o">.</span><span class="n">dtypes</span>
-<span class="n">data10_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">new_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;CITY&#39;</span><span class="p">,</span> <span class="s1">&#39;STNAME&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">institutions_df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;CITY&#39;</span><span class="p">,</span> <span class="s1">&#39;STNAME&#39;</span><span class="p">]]</span>
+                                 
+<span class="c1"># Re-index after rearrenging</span>
+<span class="n">institutions_df</span> <span class="o">=</span> <span class="n">institutions_df</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="n">new_cols</span><span class="p">)</span>
+<span class="n">institutions_df</span>
 </pre></div>
 
     </div>
@@ -13891,7 +16413,7 @@ dtype: object</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[16]:</div>
+    <div class="prompt output_prompt">Out[15]:</div>
 
 
 
@@ -13914,557 +16436,477 @@ dtype: object</pre>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>COMPANY</th>
-      <th>FISCAL_YEAR</th>
-      <th>STATE</th>
-      <th>ASSETS_MILLIONS</th>
-      <th>LIABILITIES_MILLIONS</th>
-      <th>COURT_DISTRICT</th>
+      <th>NAME</th>
+      <th>CITY</th>
+      <th>STNAME</th>
+      <th>CERT</th>
+      <th>ADDRESS</th>
+      <th>ASSET</th>
+      <th>BKCLASS</th>
+      <th>CHANGEC1</th>
+      <th>CLCODE</th>
+      <th>COUNTY</th>
+      <th>DATEUPDT</th>
+      <th>DEP</th>
+      <th>EFFDATE</th>
+      <th>ENDEFYMD</th>
+      <th>EQ</th>
+      <th>ESTYMD</th>
+      <th>FDICDBS</th>
+      <th>FDICREGN</th>
+      <th>FDICSUPV</th>
+      <th>FED</th>
+      <th>FED_RSSD</th>
+      <th>INSDATE</th>
+      <th>ROA</th>
+      <th>ROAQ</th>
+      <th>ROE</th>
+      <th>ROEQ</th>
+      <th>RUNDATE</th>
+      <th>STALP</th>
+      <th>STCNTY</th>
+      <th>STNUM</th>
+      <th>ZIP</th>
+      <th>SUPRV_FD</th>
+      <th>OCCDIST</th>
+      <th>UNINUM</th>
+      <th>ULTCERT</th>
+      <th>TE01N528</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>Advanta Group</td>
-      <td>2010</td>
-      <td>DE</td>
-      <td>363.00</td>
-      <td>331.000</td>
-      <td>D</td>
+      <td>0</td>
+      <td>The Western Saving Fund Society of Philadelphia</td>
+      <td>HAVERFORD</td>
+      <td>PENNSYLVANIA</td>
+      <td>15698</td>
+      <td>401 WEST LANCASTER AVENUE</td>
+      <td>0</td>
+      <td>SB</td>
+      <td>213</td>
+      <td>42</td>
+      <td>MONTGOMERY</td>
+      <td>04/07/1982</td>
+      <td>0</td>
+      <td>04/03/1982</td>
+      <td>04/03/1982</td>
+      <td>0</td>
+      <td>01/01/1847</td>
+      <td>2</td>
+      <td>NEW YORK</td>
+      <td>NEW YORK</td>
+      <td>3</td>
+      <td>897116</td>
+      <td>11/21/1939</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>09/04/2019</td>
+      <td>PA</td>
+      <td>42091</td>
+      <td>42</td>
+      <td>19041</td>
+      <td>2</td>
+      <td>1</td>
+      <td>9966</td>
+      <td>7946</td>
+      <td>0</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>Amcore Financial, Inc.</td>
-      <td>2010</td>
-      <td>IL</td>
-      <td>7.00</td>
-      <td>75.000</td>
-      <td>ND</td>
+      <td>1</td>
+      <td>Bank of Summerton</td>
+      <td>SUMMERTON</td>
+      <td>SOUTH CAROLINA</td>
+      <td>15716</td>
+      <td>MAIN STREET</td>
+      <td>5045</td>
+      <td>NM</td>
+      <td>223</td>
+      <td>21</td>
+      <td>CLARENDON</td>
+      <td>10/23/1985</td>
+      <td>4412</td>
+      <td>09/16/1985</td>
+      <td>09/16/1985</td>
+      <td>585</td>
+      <td>09/11/1934</td>
+      <td>5</td>
+      <td>ATLANTA</td>
+      <td>ATLANTA</td>
+      <td>5</td>
+      <td>577221</td>
+      <td>01/15/1940</td>
+      <td>2.08</td>
+      <td>3.42</td>
+      <td>19.09</td>
+      <td>30.52</td>
+      <td>09/04/2019</td>
+      <td>SC</td>
+      <td>45027</td>
+      <td>45</td>
+      <td>29148</td>
+      <td>5</td>
+      <td>1</td>
+      <td>9979</td>
+      <td>873</td>
+      <td>0</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>American Mortgage Acceptance Company</td>
-      <td>2010</td>
-      <td>NY</td>
-      <td>6.37</td>
-      <td>119.968</td>
-      <td>SD</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Barzel Industries, Inc.</td>
-      <td>2010</td>
-      <td>DE</td>
-      <td>366.00</td>
-      <td>385.000</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Baseline Oil &amp; Gas Corp.</td>
-      <td>2010</td>
+      <td>2</td>
+      <td>First City, Texas - Austin, National Association</td>
+      <td>AUSTIN</td>
+      <td>TEXAS</td>
+      <td>15721</td>
+      <td>823 CONGRESS AVENUE</td>
+      <td>345518</td>
+      <td>N</td>
+      <td>211</td>
+      <td>3</td>
+      <td>TRAVIS</td>
+      <td>11/03/1992</td>
+      <td>331568</td>
+      <td>10/30/1992</td>
+      <td>10/30/1992</td>
+      <td>6972</td>
+      <td>06/05/1936</td>
+      <td>13</td>
+      <td>DALLAS</td>
+      <td>DALLAS</td>
+      <td>11</td>
+      <td>7353</td>
+      <td>02/21/1940</td>
+      <td>-2.07</td>
+      <td>-0.45</td>
+      <td>-91.84</td>
+      <td>-22.36</td>
+      <td>09/04/2019</td>
       <td>TX</td>
-      <td>80.00</td>
-      <td>139.000</td>
-      <td>SD</td>
+      <td>48453</td>
+      <td>48</td>
+      <td>78767</td>
+      <td>13</td>
+      <td>5</td>
+      <td>9983</td>
+      <td>5510</td>
+      <td>0</td>
     </tr>
     <tr>
-      <th>5</th>
-      <td>Blockbuster</td>
-      <td>2010</td>
-      <td>NY</td>
-      <td>1017.04</td>
-      <td>1464.940</td>
-      <td>SD</td>
+      <td>3</td>
+      <td>BANK IOWA</td>
+      <td>NEW HAMPTON</td>
+      <td>IOWA</td>
+      <td>15736</td>
+      <td>606 WEST MILWAUKEE</td>
+      <td>206135</td>
+      <td>SM</td>
+      <td>223</td>
+      <td>13</td>
+      <td>CHICKASAW</td>
+      <td>04/07/2011</td>
+      <td>188024</td>
+      <td>03/31/2011</td>
+      <td>03/31/2011</td>
+      <td>16414</td>
+      <td>06/16/1937</td>
+      <td>11</td>
+      <td>KANSAS CITY</td>
+      <td>KANSAS CITY</td>
+      <td>7</td>
+      <td>668848</td>
+      <td>04/15/1940</td>
+      <td>1.09</td>
+      <td>0.75</td>
+      <td>13.58</td>
+      <td>9.09</td>
+      <td>09/04/2019</td>
+      <td>IA</td>
+      <td>19037</td>
+      <td>19</td>
+      <td>50659</td>
+      <td>11</td>
+      <td>4</td>
+      <td>9992</td>
+      <td>14521</td>
+      <td>0</td>
     </tr>
     <tr>
-      <th>6</th>
-      <td>BSML, Inc.</td>
-      <td>2010</td>
-      <td>FL</td>
-      <td>6.94</td>
-      <td>9.970</td>
-      <td>SD</td>
+      <td>4</td>
+      <td>Security State Bank</td>
+      <td>SPIRIT LAKE</td>
+      <td>IOWA</td>
+      <td>15368</td>
+      <td>1306  18TH STREET</td>
+      <td>38799</td>
+      <td>SM</td>
+      <td>223</td>
+      <td>13</td>
+      <td>DICKINSON</td>
+      <td>01/31/2003</td>
+      <td>26764</td>
+      <td>10/28/2002</td>
+      <td>10/28/2002</td>
+      <td>2615</td>
+      <td>01/01/1935</td>
+      <td>11</td>
+      <td>KANSAS CITY</td>
+      <td>KANSAS CITY</td>
+      <td>7</td>
+      <td>810142</td>
+      <td>03/24/1936</td>
+      <td>3.27</td>
+      <td>-0.05</td>
+      <td>46.44</td>
+      <td>-0.68</td>
+      <td>09/04/2019</td>
+      <td>IA</td>
+      <td>19059</td>
+      <td>19</td>
+      <td>51360</td>
+      <td>11</td>
+      <td>4</td>
+      <td>9695</td>
+      <td>15555</td>
+      <td>0</td>
     </tr>
     <tr>
-      <th>7</th>
-      <td>California Coastal Communities, Inc.</td>
-      <td>2010</td>
-      <td>CA</td>
-      <td>291.00</td>
-      <td>231.000</td>
-      <td>CD</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
-      <th>8</th>
-      <td>Canopy Financial, Inc.</td>
-      <td>2010</td>
-      <td>IL</td>
-      <td>18.99</td>
-      <td>25.840</td>
-      <td>ND</td>
+      <td>27610</td>
+      <td>Troy Bank &amp; Trust Company</td>
+      <td>TROY</td>
+      <td>ALABAMA</td>
+      <td>5598</td>
+      <td>1000 HIGHWAY 231 SOUTH</td>
+      <td>912723</td>
+      <td>NM</td>
+      <td>810</td>
+      <td>21</td>
+      <td>PIKE</td>
+      <td>09/24/2008</td>
+      <td>777333</td>
+      <td>07/01/2008</td>
+      <td>12/31/9999</td>
+      <td>107713</td>
+      <td>01/01/1906</td>
+      <td>5</td>
+      <td>ATLANTA</td>
+      <td>ATLANTA</td>
+      <td>6</td>
+      <td>134437</td>
+      <td>01/01/1934</td>
+      <td>0.96</td>
+      <td>0.96</td>
+      <td>8.07</td>
+      <td>8.07</td>
+      <td>09/04/2019</td>
+      <td>AL</td>
+      <td>01109</td>
+      <td>1</td>
+      <td>36081</td>
+      <td>5</td>
+      <td>5</td>
+      <td>3811</td>
+      <td>5598</td>
+      <td>0</td>
     </tr>
     <tr>
-      <th>9</th>
-      <td>Capital Growth Systems Inc.</td>
-      <td>2010</td>
-      <td>DE</td>
-      <td>26.97</td>
-      <td>17.146</td>
-      <td>D</td>
+      <td>27611</td>
+      <td>First State Bank</td>
+      <td>ELMORE CITY</td>
+      <td>OKLAHOMA</td>
+      <td>18924</td>
+      <td>206 S MAIN ST</td>
+      <td>12885</td>
+      <td>NM</td>
+      <td>0</td>
+      <td>21</td>
+      <td>GARVIN</td>
+      <td>03/19/2019</td>
+      <td>8788</td>
+      <td>12/31/2018</td>
+      <td>12/31/9999</td>
+      <td>1812</td>
+      <td>01/01/1903</td>
+      <td>13</td>
+      <td>DALLAS</td>
+      <td>DALLAS</td>
+      <td>10</td>
+      <td>116554</td>
+      <td>10/24/1963</td>
+      <td>2.88</td>
+      <td>2.88</td>
+      <td>21.56</td>
+      <td>21.56</td>
+      <td>09/04/2019</td>
+      <td>OK</td>
+      <td>40049</td>
+      <td>40</td>
+      <td>73433</td>
+      <td>13</td>
+      <td>5</td>
+      <td>12771</td>
+      <td>18924</td>
+      <td>0</td>
     </tr>
     <tr>
-      <th>10</th>
-      <td>Ceragenix Pharmaceuticals, Inc. et al.</td>
-      <td>2010</td>
-      <td>CO</td>
-      <td>1.50</td>
-      <td>12.960</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>Certified Diabetic Services, Inc.</td>
-      <td>2010</td>
-      <td>FL</td>
-      <td>0.40</td>
-      <td>0.810</td>
-      <td>MD</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>Chem Rx Corp.</td>
-      <td>2010</td>
-      <td>DE</td>
-      <td>169.69</td>
-      <td>178.280</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>CIB Maine Bancshares, Inc.</td>
-      <td>2010</td>
-      <td>WI</td>
-      <td>105.00</td>
-      <td>107.000</td>
-      <td>ED</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>Ciena Capitol LLC</td>
-      <td>2010</td>
-      <td>NY</td>
-      <td>521.00</td>
-      <td>584.000</td>
-      <td>SD</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>CIT Group Inc.</td>
-      <td>2010</td>
-      <td>NY</td>
-      <td>71019.20</td>
-      <td>64901.200</td>
-      <td>SD</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>Citadel Broadcastig Corp.</td>
-      <td>2010</td>
-      <td>NY</td>
-      <td>1400.58</td>
-      <td>2464.310</td>
-      <td>SD</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>Corus Bankshares, Inc.</td>
-      <td>2010</td>
-      <td>IL</td>
-      <td>314.15</td>
-      <td>532.940</td>
-      <td>ND</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>Cross Canyon Energy Corp.</td>
-      <td>2010</td>
-      <td>TX</td>
-      <td>53.35</td>
-      <td>41.810</td>
-      <td>SD</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>DiscoverNet, In.</td>
-      <td>2010</td>
-      <td>WI</td>
-      <td>701.00</td>
-      <td>403.000</td>
-      <td>WD</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>ECO2 Plastics, Inc.</td>
-      <td>2010</td>
-      <td>CA</td>
-      <td>1.70</td>
-      <td>6.390</td>
-      <td>ND</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>Edge Petroleum Corp.</td>
-      <td>2010</td>
-      <td>TX</td>
-      <td>264.00</td>
-      <td>234.000</td>
-      <td>SD</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>FairPoint Communications</td>
-      <td>2010</td>
-      <td>NY</td>
-      <td>3235.60</td>
-      <td>3234.470</td>
-      <td>SD</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>FirstFed Financial Corp.</td>
-      <td>2010</td>
-      <td>CA</td>
-      <td>4.47</td>
-      <td>159.650</td>
-      <td>CD</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>Firstfold Corp.</td>
-      <td>2010</td>
-      <td>NV</td>
-      <td>17.96</td>
-      <td>26.980</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>GigaBeam Corp.</td>
-      <td>2010</td>
-      <td>DE</td>
-      <td>3.18</td>
-      <td>9.396</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>GSC Group</td>
-      <td>2010</td>
-      <td>NY</td>
-      <td>119.79</td>
-      <td>313.560</td>
-      <td>SD</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>GSI Group</td>
-      <td>2010</td>
-      <td>DE</td>
-      <td>555.00</td>
-      <td>370.000</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>Guaranty Financial Group, Inc. et al.</td>
-      <td>2010</td>
-      <td>TX</td>
-      <td>15391.00</td>
-      <td>14390.000</td>
-      <td>ND</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>Imperial Capitol Bancorp Inc.</td>
-      <td>2010</td>
-      <td>CA</td>
-      <td>20.00</td>
-      <td>190.860</td>
-      <td>CA</td>
-    </tr>
-    <tr>
-      <th>30</th>
-      <td>Isco International, Inc.</td>
-      <td>2010</td>
-      <td>IL</td>
-      <td>5.28</td>
-      <td>25.460</td>
-      <td>ND</td>
-    </tr>
-    <tr>
-      <th>31</th>
-      <td>Jennifer Covertibles Inc.</td>
-      <td>2010</td>
-      <td>NY</td>
-      <td>25.97</td>
-      <td>46.353</td>
-      <td>SD</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>Jesup &amp; Lamont, Inc. , JWA</td>
-      <td>2010</td>
-      <td>NY</td>
-      <td>41.15</td>
-      <td>24.564</td>
-      <td>SD</td>
-    </tr>
-    <tr>
-      <th>33</th>
-      <td>Kolorfusion International Inc.</td>
-      <td>2010</td>
-      <td>CO</td>
-      <td>596.70</td>
-      <td>2.490</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>34</th>
-      <td>MDI, Inc.</td>
-      <td>2010</td>
-      <td>TX</td>
-      <td>5.18</td>
-      <td>2.990</td>
-      <td>WD</td>
-    </tr>
-    <tr>
-      <th>35</th>
-      <td>Medical Staffing Network</td>
-      <td>2010</td>
-      <td>FL</td>
-      <td>96.00</td>
-      <td>150.000</td>
-      <td>SD</td>
-    </tr>
-    <tr>
-      <th>36</th>
-      <td>Mesa Air Group, Inc.</td>
-      <td>2010</td>
-      <td>NY</td>
-      <td>975.49</td>
-      <td>868.590</td>
-      <td>SD</td>
-    </tr>
-    <tr>
-      <th>37</th>
-      <td>Neenah Enterprises, Inc.</td>
-      <td>2010</td>
-      <td>DE</td>
-      <td>286.61</td>
-      <td>449.100</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>38</th>
-      <td>NutraCea</td>
-      <td>2010</td>
-      <td>AZ</td>
-      <td>83.70</td>
-      <td>18.900</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>39</th>
-      <td>Orleans Homebuilders, Inc.</td>
-      <td>2010</td>
-      <td>DE</td>
-      <td>591.46</td>
-      <td>560.130</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>40</th>
-      <td>Otter Tail AG Enterprises LLC</td>
-      <td>2010</td>
-      <td>MN</td>
-      <td>67.00</td>
-      <td>86.000</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>41</th>
-      <td>PNG Ventures, Inc.</td>
-      <td>2010</td>
-      <td>DE</td>
-      <td>40.00</td>
-      <td>45.000</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>42</th>
-      <td>Protective Products of America, Inc.</td>
-      <td>2010</td>
-      <td>FL</td>
-      <td>27.00</td>
-      <td>29.000</td>
-      <td>SD</td>
-    </tr>
-    <tr>
-      <th>43</th>
-      <td>Provident Royalties, L.L.C et al.</td>
-      <td>2010</td>
-      <td>TX</td>
-      <td>443.31</td>
-      <td>466.050</td>
-      <td>ND</td>
-    </tr>
-    <tr>
-      <th>44</th>
-      <td>R &amp; G Financial Corporation</td>
-      <td>2010</td>
-      <td>PR</td>
-      <td>40.00</td>
-      <td>421.000</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>45</th>
-      <td>Rancher Energy Corp.</td>
-      <td>2010</td>
-      <td>CO</td>
-      <td>32.30</td>
-      <td>11.580</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>46</th>
-      <td>RCLC</td>
-      <td>2010</td>
-      <td>NJ</td>
-      <td>16.37</td>
-      <td>10.371</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>47</th>
-      <td>Regent Comms., Inc. , Riveria Holdings</td>
-      <td>2010</td>
-      <td>DE</td>
-      <td>166.51</td>
-      <td>68.490</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>48</th>
-      <td>South Texas Oil Company</td>
-      <td>2010</td>
-      <td>TX</td>
-      <td>49.07</td>
-      <td>27.900</td>
-      <td>WD</td>
-    </tr>
-    <tr>
-      <th>49</th>
-      <td>Stamford Industrial Group</td>
-      <td>2010</td>
+      <td>27612</td>
+      <td>The Farmers National Bank of Canfield</td>
+      <td>CANFIELD</td>
+      <td>OHIO</td>
+      <td>6540</td>
+      <td>20 SOUTH BROAD STREET</td>
+      <td>2335841</td>
+      <td>N</td>
+      <td>810</td>
+      <td>3</td>
+      <td>MAHONING</td>
+      <td>08/31/2017</td>
+      <td>1959300</td>
+      <td>08/16/2017</td>
+      <td>12/31/9999</td>
+      <td>254487</td>
+      <td>02/17/1887</td>
+      <td>9</td>
+      <td>CHICAGO</td>
+      <td>CHICAGO</td>
+      <td>4</td>
+      <td>680813</td>
+      <td>01/01/1934</td>
+      <td>1.38</td>
+      <td>1.38</td>
+      <td>12.85</td>
+      <td>12.85</td>
+      <td>09/04/2019</td>
       <td>OH</td>
-      <td>62.20</td>
-      <td>14.310</td>
-      <td>ND</td>
+      <td>39099</td>
+      <td>39</td>
+      <td>44406</td>
+      <td>9</td>
+      <td>3</td>
+      <td>4377</td>
+      <td>6540</td>
+      <td>0</td>
     </tr>
     <tr>
-      <th>50</th>
-      <td>The Penn Traffic Company</td>
-      <td>2010</td>
-      <td>DE</td>
-      <td>150.38</td>
-      <td>136.870</td>
-      <td>D</td>
+      <td>27613</td>
+      <td>Santa Cruz County Bank</td>
+      <td>SANTA CRUZ</td>
+      <td>CALIFORNIA</td>
+      <td>57591</td>
+      <td>75 RIVER STREET</td>
+      <td>668098</td>
+      <td>NM</td>
+      <td>520</td>
+      <td>21</td>
+      <td>SANTA CRUZ</td>
+      <td>09/11/2018</td>
+      <td>581734</td>
+      <td>09/04/2018</td>
+      <td>12/31/9999</td>
+      <td>71466</td>
+      <td>02/03/2004</td>
+      <td>14</td>
+      <td>SAN FRANCISCO</td>
+      <td>SAN FRANCISCO</td>
+      <td>12</td>
+      <td>3235410</td>
+      <td>02/03/2004</td>
+      <td>1.78</td>
+      <td>1.78</td>
+      <td>16.94</td>
+      <td>16.94</td>
+      <td>09/04/2019</td>
+      <td>CA</td>
+      <td>06087</td>
+      <td>6</td>
+      <td>95060</td>
+      <td>14</td>
+      <td>4</td>
+      <td>366199</td>
+      <td>57591</td>
+      <td>0</td>
     </tr>
     <tr>
-      <th>51</th>
-      <td>TLC Vision Corp.</td>
-      <td>2010</td>
-      <td>DE</td>
-      <td>130.07</td>
-      <td>166.850</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>52</th>
-      <td>Topspin Medical, Inc.</td>
-      <td>2010</td>
-      <td>DE</td>
-      <td>0.36</td>
-      <td>0.540</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>53</th>
-      <td>Trico Marine Services, Triple Crown Media</td>
-      <td>2010</td>
-      <td>NY</td>
-      <td>535.20</td>
-      <td>472.700</td>
-      <td>SD</td>
-    </tr>
-    <tr>
-      <th>54</th>
-      <td>U.S. Concrete, Inc.</td>
-      <td>2010</td>
-      <td>DE</td>
-      <td>389.16</td>
-      <td>399.350</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>55</th>
-      <td>Velocity Express Corp.</td>
-      <td>2010</td>
-      <td>DE</td>
-      <td>94.00</td>
-      <td>121.000</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>56</th>
-      <td>Vermillioin Inc.</td>
-      <td>2010</td>
-      <td>DE</td>
-      <td>7.15</td>
-      <td>32.015</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>57</th>
-      <td>Vion Pharmaceuticals, Inc.</td>
-      <td>2010</td>
-      <td>DE</td>
-      <td>3030.85</td>
-      <td>2366.240</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>58</th>
-      <td>Visteon Corp.</td>
-      <td>2010</td>
-      <td>DE</td>
-      <td>4577.03</td>
-      <td>5324.030</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>59</th>
-      <td>Xerium Technologies, Inc.</td>
-      <td>2010</td>
-      <td>DE</td>
-      <td>694.00</td>
-      <td>813.000</td>
-      <td>D</td>
+      <td>27614</td>
+      <td>Encore  Bank</td>
+      <td>NAPLES</td>
+      <td>FLORIDA</td>
+      <td>58376</td>
+      <td>3003 TAMAIMI TRAIL</td>
+      <td>391634</td>
+      <td>NM</td>
+      <td>240</td>
+      <td>21</td>
+      <td>COLLIER</td>
+      <td>04/27/2018</td>
+      <td>343570</td>
+      <td>04/20/2018</td>
+      <td>04/20/2018</td>
+      <td>40829</td>
+      <td>06/04/2007</td>
+      <td>5</td>
+      <td>ATLANTA</td>
+      <td>ATLANTA</td>
+      <td>6</td>
+      <td>3603457</td>
+      <td>06/04/2007</td>
+      <td>1.08</td>
+      <td>1.08</td>
+      <td>10.34</td>
+      <td>10.34</td>
+      <td>09/04/2019</td>
+      <td>FL</td>
+      <td>12021</td>
+      <td>12</td>
+      <td>34103</td>
+      <td>5</td>
+      <td>5</td>
+      <td>448927</td>
+      <td>58376</td>
+      <td>0</td>
     </tr>
   </tbody>
 </table>
+<p>27615 rows × 36 columns</p>
 </div>
 </div>
 
@@ -14474,101 +16916,26 @@ dtype: object</pre>
 </div>
 
 </div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data11_df</span><span class="p">[</span><span class="s1">&#39;ASSETS_MILLIONS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data11_df</span><span class="p">[</span><span class="s1">&#39;ASSETS_MILLIONS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="n">regex</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-<span class="n">data11_df</span><span class="p">[</span><span class="s1">&#39;LIABILITIES_MILLIONS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data11_df</span><span class="p">[</span><span class="s1">&#39;LIABILITIES_MILLIONS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="n">regex</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Append-data">Append data<a class="anchor-link" href="#Append-data">&#182;</a></h2>
+<h2 id="Save-to-CSV-and-JSON">Save to CSV and JSON<a class="anchor-link" href="#Save-to-CSV-and-JSON">&#182;</a></h2>
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Append data for all three years</span>
-<span class="n">appen1</span> <span class="o">=</span>  <span class="n">data09_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data10_df</span><span class="p">,</span> <span class="n">ignore_index</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">sort</span> <span class="o">=</span> <span class="s2">&quot;false&quot;</span><span class="p">)</span>
-<span class="n">appen2</span> <span class="o">=</span>  <span class="n">appen1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data11_df</span><span class="p">,</span> <span class="n">ignore_index</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">sort</span> <span class="o">=</span> <span class="s2">&quot;false&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Save to CSV and JSON</span>
 
-<span class="c1"># Rearrenge columns of all data and reaname columns</span>
-
-<span class="n">appen2</span> <span class="o">=</span> <span class="n">appen2</span><span class="p">[[</span><span class="s1">&#39;FISCAL_YEAR&#39;</span><span class="p">,</span><span class="s1">&#39;STATE&#39;</span><span class="p">,</span> <span class="s1">&#39;COMPANY&#39;</span><span class="p">,</span> <span class="s1">&#39;ASSETS_MILLIONS&#39;</span><span class="p">,</span><span class="s1">&#39;LIABILITIES_MILLIONS&#39;</span><span class="p">,</span> <span class="s1">&#39;COURT_DISTRICT&#39;</span><span class="p">]]</span> 
-
-<span class="n">appen2</span><span class="o">.</span><span class="n">dtypes</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
+<span class="n">institutions_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../financial_instituttions_data/institutions_clean.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
+<span class="n">locations_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../financial_instituttions_data/locations_clean.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
 
 
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[18]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>FISCAL_YEAR               int64
-STATE                    object
-COMPANY                  object
-ASSETS_MILLIONS         float64
-LIABILITIES_MILLIONS    float64
-COURT_DISTRICT           object
-dtype: object</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Save-to-CSV-and-json">Save to CSV and json<a class="anchor-link" href="#Save-to-CSV-and-json">&#182;</a></h2>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data09_clean</span> <span class="o">=</span> <span class="n">data09_df</span>
-<span class="n">data10_clean</span> <span class="o">=</span> <span class="n">data10_df</span>
-<span class="n">data11_clean</span> <span class="o">=</span> <span class="n">data11_df</span>
-
-<span class="n">combined_data</span> <span class="o">=</span> <span class="n">appen2</span>
-
-<span class="n">data09_clean</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;bankruptcy_data/data09_clean.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
-<span class="n">data10_clean</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;bankruptcy_data/data10_clean.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
-<span class="n">data11_clean</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;bankruptcy_data/data11_clean.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
-<span class="n">combined_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;bankruptcy_data/combined_data.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
-
-<span class="n">data09_clean</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="s2">&quot;bankruptcy_data/data09_clean.json&quot;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
-<span class="n">data10_clean</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="s2">&quot;bankruptcy_data/data10_clean.json&quot;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
-<span class="n">data11_clean</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="s2">&quot;bankruptcy_data/data11_clean.json&quot;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
-<span class="n">combined_data</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="s2">&quot;bankruptcy_data/combined_data.json&quot;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+<span class="n">institutions_df</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="s2">&quot;../financial_instituttions_data/institutions_clean.json&quot;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+<span class="n">locations_df</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="s2">&quot;../financial_instituttions_data/locations_clean.json&quot;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14582,28 +16949,7 @@ dtype: object</pre>
 <h1 id="Load">Load<a class="anchor-link" href="#Load">&#182;</a></h1>
 </div>
 </div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Dependencies">Dependencies<a class="anchor-link" href="#Dependencies">&#182;</a></h2>
-</div>
-</div>
 </div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="k">import</span> <span class="n">create_engine</span>
-<span class="kn">import</span> <span class="nn">secret</span> <span class="c1">#file with database password</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -14613,12 +16959,11 @@ dtype: object</pre>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># connect to local database </span>
-<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;postgresql://</span><span class="si">{secret.user_pass}</span><span class="s2">@localhost:5432/bankruptcyDB&quot;</span><span class="p">)</span>
-<span class="c1"># connection = engine.connect()</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;postgresql://</span><span class="si">{secret.user_pass}</span><span class="s2">@localhost:5432/banksDB&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14628,7 +16973,7 @@ dtype: object</pre>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">engine</span><span class="o">.</span><span class="n">table_names</span><span class="p">()</span>
@@ -14644,13 +16989,13 @@ dtype: object</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[22]:</div>
+    <div class="prompt output_prompt">Out[30]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&#39;data2009&#39;, &#39;data2010&#39;, &#39;data2011&#39;, &#39;combined_data&#39;]</pre>
+<pre>[]</pre>
 </div>
 
 </div>
@@ -14658,7 +17003,7 @@ dtype: object</pre>
 </div>
 </div>
 
-</div></section></section><section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -14668,21 +17013,19 @@ dtype: object</pre>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Use pandas to load csv converted DataFrame into database</span>
-<span class="n">data09_clean</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;data2009&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;append&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">data10_clean</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;data2010&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;append&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">data11_clean</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;data2011&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;append&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">combined_data</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;combined_data&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;append&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">institutions_df</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;institutions&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;append&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">locations_df</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;locations&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;append&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-</div></section></section><section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -14692,12 +17035,12 @@ dtype: object</pre>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Confirm data has been added by querying the tables</span>
 
-<span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s1">&#39;select * from combined_data&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s1">&#39;select * from institutions&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -14710,7 +17053,7 @@ dtype: object</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[25]:</div>
+    <div class="prompt output_prompt">Out[32]:</div>
 
 
 
@@ -14733,271 +17076,239 @@ dtype: object</pre>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>FISCAL_YEAR</th>
-      <th>STATE</th>
-      <th>COMPANY</th>
-      <th>ASSETS_MILLIONS</th>
-      <th>LIABILITIES_MILLIONS</th>
-      <th>COURT_DISTRICT</th>
+      <th>NAME</th>
+      <th>CITY</th>
+      <th>STNAME</th>
+      <th>CERT</th>
+      <th>ADDRESS</th>
+      <th>ASSET</th>
+      <th>BKCLASS</th>
+      <th>CHANGEC1</th>
+      <th>CLCODE</th>
+      <th>COUNTY</th>
+      <th>DATEUPDT</th>
+      <th>DEP</th>
+      <th>EFFDATE</th>
+      <th>ENDEFYMD</th>
+      <th>EQ</th>
+      <th>ESTYMD</th>
+      <th>FDICDBS</th>
+      <th>FDICREGN</th>
+      <th>FDICSUPV</th>
+      <th>FED</th>
+      <th>FED_RSSD</th>
+      <th>INSDATE</th>
+      <th>ROA</th>
+      <th>ROAQ</th>
+      <th>ROE</th>
+      <th>ROEQ</th>
+      <th>RUNDATE</th>
+      <th>STALP</th>
+      <th>STCNTY</th>
+      <th>STNUM</th>
+      <th>ZIP</th>
+      <th>SUPRV_FD</th>
+      <th>OCCDIST</th>
+      <th>UNINUM</th>
+      <th>ULTCERT</th>
+      <th>TE01N528</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>2009</td>
-      <td>FL</td>
-      <td>A21, Inc.</td>
-      <td>25.2</td>
-      <td>30.3</td>
-      <td>MD</td>
+      <td>0</td>
+      <td>The Western Saving Fund Society of Philadelphia</td>
+      <td>HAVERFORD</td>
+      <td>PENNSYLVANIA</td>
+      <td>15698</td>
+      <td>401 WEST LANCASTER AVENUE</td>
+      <td>0</td>
+      <td>SB</td>
+      <td>213</td>
+      <td>42</td>
+      <td>MONTGOMERY</td>
+      <td>04/07/1982</td>
+      <td>0</td>
+      <td>04/03/1982</td>
+      <td>04/03/1982</td>
+      <td>0</td>
+      <td>01/01/1847</td>
+      <td>2</td>
+      <td>NEW YORK</td>
+      <td>NEW YORK</td>
+      <td>3</td>
+      <td>897116</td>
+      <td>11/21/1939</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>09/04/2019</td>
+      <td>PA</td>
+      <td>42091</td>
+      <td>42</td>
+      <td>19041</td>
+      <td>2</td>
+      <td>1</td>
+      <td>9966</td>
+      <td>7946</td>
+      <td>0</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>2009</td>
-      <td>DE</td>
-      <td>Abitibibowater Inc.</td>
-      <td>9937.0</td>
-      <td>2213.0</td>
-      <td>D</td>
+      <td>1</td>
+      <td>Bank of Summerton</td>
+      <td>SUMMERTON</td>
+      <td>SOUTH CAROLINA</td>
+      <td>15716</td>
+      <td>MAIN STREET</td>
+      <td>5045</td>
+      <td>NM</td>
+      <td>223</td>
+      <td>21</td>
+      <td>CLARENDON</td>
+      <td>10/23/1985</td>
+      <td>4412</td>
+      <td>09/16/1985</td>
+      <td>09/16/1985</td>
+      <td>585</td>
+      <td>09/11/1934</td>
+      <td>5</td>
+      <td>ATLANTA</td>
+      <td>ATLANTA</td>
+      <td>5</td>
+      <td>577221</td>
+      <td>01/15/1940</td>
+      <td>2.08</td>
+      <td>3.42</td>
+      <td>19.09</td>
+      <td>30.52</td>
+      <td>09/04/2019</td>
+      <td>SC</td>
+      <td>45027</td>
+      <td>45</td>
+      <td>29148</td>
+      <td>5</td>
+      <td>1</td>
+      <td>9979</td>
+      <td>873</td>
+      <td>0</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>2009</td>
-      <td>FL</td>
-      <td>Accentia Biopharmaceuticals, Inc.</td>
-      <td>134.9</td>
-      <td>77.6</td>
-      <td>MD</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2009</td>
-      <td>DE</td>
-      <td>Accredited Home Lenders Holding Co.</td>
-      <td>799.5</td>
-      <td>490.7</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2009</td>
-      <td>NY</td>
-      <td>Apex Silver Mines LTD</td>
-      <td>721.3</td>
-      <td>930.9</td>
-      <td>SD</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s1">&#39;select * from data2009&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[26]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>FISCAL_YEAR</th>
-      <th>STATE</th>
-      <th>COMPANY</th>
-      <th>ASSETS_MILLIONS</th>
-      <th>LIABILITIES_MILLIONS</th>
-      <th>COURT_DISTRICT</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2009</td>
-      <td>FL</td>
-      <td>A21, Inc.</td>
-      <td>25.2</td>
-      <td>30.3</td>
-      <td>MD</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2009</td>
-      <td>DE</td>
-      <td>Abitibibowater Inc.</td>
-      <td>9937.0</td>
-      <td>2213.0</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2009</td>
-      <td>FL</td>
-      <td>Accentia Biopharmaceuticals, Inc.</td>
-      <td>134.9</td>
-      <td>77.6</td>
-      <td>MD</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2009</td>
-      <td>DE</td>
-      <td>Accredited Home Lenders Holding Co.</td>
-      <td>799.5</td>
-      <td>490.7</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2009</td>
-      <td>NY</td>
-      <td>Apex Silver Mines LTD</td>
-      <td>721.3</td>
-      <td>930.9</td>
-      <td>SD</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s1">&#39;select * from data2010&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[27]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>COMPANY</th>
-      <th>FISCAL_YEAR</th>
-      <th>STATE</th>
-      <th>ASSETS_MILLIONS</th>
-      <th>LIABILITIES_MILLIONS</th>
-      <th>COURT_DISTRICT</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Advanta Group</td>
-      <td>2010</td>
-      <td>DE</td>
-      <td>363.00</td>
-      <td>331.000</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Amcore Financial, Inc.</td>
-      <td>2010</td>
-      <td>IL</td>
-      <td>7.00</td>
-      <td>75.000</td>
-      <td>ND</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>American Mortgage Acceptance Company</td>
-      <td>2010</td>
-      <td>NY</td>
-      <td>6.37</td>
-      <td>119.968</td>
-      <td>SD</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Barzel Industries, Inc.</td>
-      <td>2010</td>
-      <td>DE</td>
-      <td>366.00</td>
-      <td>385.000</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Baseline Oil &amp; Gas Corp.</td>
-      <td>2010</td>
+      <td>2</td>
+      <td>First City, Texas - Austin, National Association</td>
+      <td>AUSTIN</td>
+      <td>TEXAS</td>
+      <td>15721</td>
+      <td>823 CONGRESS AVENUE</td>
+      <td>345518</td>
+      <td>N</td>
+      <td>211</td>
+      <td>3</td>
+      <td>TRAVIS</td>
+      <td>11/03/1992</td>
+      <td>331568</td>
+      <td>10/30/1992</td>
+      <td>10/30/1992</td>
+      <td>6972</td>
+      <td>06/05/1936</td>
+      <td>13</td>
+      <td>DALLAS</td>
+      <td>DALLAS</td>
+      <td>11</td>
+      <td>7353</td>
+      <td>02/21/1940</td>
+      <td>-2.07</td>
+      <td>-0.45</td>
+      <td>-91.84</td>
+      <td>-22.36</td>
+      <td>09/04/2019</td>
       <td>TX</td>
-      <td>80.00</td>
-      <td>139.000</td>
-      <td>SD</td>
+      <td>48453</td>
+      <td>48</td>
+      <td>78767</td>
+      <td>13</td>
+      <td>5</td>
+      <td>9983</td>
+      <td>5510</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>BANK IOWA</td>
+      <td>NEW HAMPTON</td>
+      <td>IOWA</td>
+      <td>15736</td>
+      <td>606 WEST MILWAUKEE</td>
+      <td>206135</td>
+      <td>SM</td>
+      <td>223</td>
+      <td>13</td>
+      <td>CHICKASAW</td>
+      <td>04/07/2011</td>
+      <td>188024</td>
+      <td>03/31/2011</td>
+      <td>03/31/2011</td>
+      <td>16414</td>
+      <td>06/16/1937</td>
+      <td>11</td>
+      <td>KANSAS CITY</td>
+      <td>KANSAS CITY</td>
+      <td>7</td>
+      <td>668848</td>
+      <td>04/15/1940</td>
+      <td>1.09</td>
+      <td>0.75</td>
+      <td>13.58</td>
+      <td>9.09</td>
+      <td>09/04/2019</td>
+      <td>IA</td>
+      <td>19037</td>
+      <td>19</td>
+      <td>50659</td>
+      <td>11</td>
+      <td>4</td>
+      <td>9992</td>
+      <td>14521</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Security State Bank</td>
+      <td>SPIRIT LAKE</td>
+      <td>IOWA</td>
+      <td>15368</td>
+      <td>1306  18TH STREET</td>
+      <td>38799</td>
+      <td>SM</td>
+      <td>223</td>
+      <td>13</td>
+      <td>DICKINSON</td>
+      <td>01/31/2003</td>
+      <td>26764</td>
+      <td>10/28/2002</td>
+      <td>10/28/2002</td>
+      <td>2615</td>
+      <td>01/01/1935</td>
+      <td>11</td>
+      <td>KANSAS CITY</td>
+      <td>KANSAS CITY</td>
+      <td>7</td>
+      <td>810142</td>
+      <td>03/24/1936</td>
+      <td>3.27</td>
+      <td>-0.05</td>
+      <td>46.44</td>
+      <td>-0.68</td>
+      <td>09/04/2019</td>
+      <td>IA</td>
+      <td>19059</td>
+      <td>19</td>
+      <td>51360</td>
+      <td>11</td>
+      <td>4</td>
+      <td>9695</td>
+      <td>15555</td>
+      <td>0</td>
     </tr>
   </tbody>
 </table>
@@ -15012,10 +17323,12 @@ dtype: object</pre>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s1">&#39;select * from data2011&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Confirm data has been added by querying the tables</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s1">&#39;select * from locations&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -15028,7 +17341,7 @@ dtype: object</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[28]:</div>
+    <div class="prompt output_prompt">Out[33]:</div>
 
 
 
@@ -15051,59 +17364,125 @@ dtype: object</pre>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>COMPANY</th>
-      <th>FISCAL_YEAR</th>
-      <th>STATE</th>
-      <th>ASSETS_MILLIONS</th>
-      <th>LIABILITIES_MILLIONS</th>
-      <th>COURT_DISTRICT</th>
+      <th>NAME</th>
+      <th>CITY</th>
+      <th>STNAME</th>
+      <th>ADDRESS</th>
+      <th>CBSA</th>
+      <th>CBSA_NO</th>
+      <th>CERT</th>
+      <th>COUNTY</th>
+      <th>FI_UNINUM</th>
+      <th>OFFNAME</th>
+      <th>OFFNUM</th>
+      <th>RUNDATE</th>
+      <th>SERVTYPE</th>
+      <th>STALP</th>
+      <th>STCNTY</th>
+      <th>UNINUM</th>
+      <th>ZIP</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>Ad Systems Communications, Inc.</td>
-      <td>2011</td>
-      <td>NV</td>
-      <td>405.00</td>
-      <td>4.00</td>
-      <td>D</td>
+      <td>0</td>
+      <td>Old National Bank</td>
+      <td>EVANSVILLE</td>
+      <td>INDIANA</td>
+      <td>4500 WASHINGTON AVENUE</td>
+      <td>Evansville, IN-KY</td>
+      <td>21780</td>
+      <td>3832</td>
+      <td>VANDERBURGH</td>
+      <td>2492</td>
+      <td>HEBRON PLACE BRANCH</td>
+      <td>8</td>
+      <td>09/04/2019</td>
+      <td>11</td>
+      <td>IN</td>
+      <td>18163</td>
+      <td>203604</td>
+      <td>47714</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>Alphatrade.com</td>
-      <td>2011</td>
-      <td>NV</td>
-      <td>686.00</td>
-      <td>4.00</td>
-      <td>D</td>
+      <td>1</td>
+      <td>Regions Bank</td>
+      <td>VINCENNES</td>
+      <td>INDIANA</td>
+      <td>2202 NORTH SIXTH STREET</td>
+      <td>Vincennes, IN</td>
+      <td>47180</td>
+      <td>12368</td>
+      <td>KNOX</td>
+      <td>7866</td>
+      <td>NORTH VINCENNES BRANCH</td>
+      <td>1636</td>
+      <td>09/04/2019</td>
+      <td>11</td>
+      <td>IN</td>
+      <td>18083</td>
+      <td>203651</td>
+      <td>47591</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>AMBAC Financial Group</td>
-      <td>2011</td>
-      <td>NY</td>
-      <td>395.00</td>
-      <td>1683.00</td>
-      <td>SD</td>
+      <td>2</td>
+      <td>MutualBank</td>
+      <td>MITCHELL</td>
+      <td>INDIANA</td>
+      <td>628 WEST MAIN STREET</td>
+      <td>Bedford, IN</td>
+      <td>13260</td>
+      <td>27744</td>
+      <td>LAWRENCE</td>
+      <td>40578</td>
+      <td>MESSENGER SERVICE BRANCH</td>
+      <td>144</td>
+      <td>09/04/2019</td>
+      <td>27</td>
+      <td>IN</td>
+      <td>18093</td>
+      <td>203628</td>
+      <td>47446</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>Ambassdors International , Inc.</td>
-      <td>2011</td>
-      <td>DE</td>
-      <td>86.44</td>
-      <td>87.32</td>
-      <td>D</td>
+      <td>3</td>
+      <td>German American Bank</td>
+      <td>WASHINGTON</td>
+      <td>INDIANA</td>
+      <td>17 CHERRY TREE PLAZA, US HIGHWAY 50 EAST</td>
+      <td>Washington, IN</td>
+      <td>47780</td>
+      <td>17393</td>
+      <td>DAVIESS</td>
+      <td>11392</td>
+      <td>WASHINGTON CHERRY TREE BRANCH</td>
+      <td>30</td>
+      <td>09/04/2019</td>
+      <td>11</td>
+      <td>IN</td>
+      <td>18027</td>
+      <td>203662</td>
+      <td>47501</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>American Pacific Financial Corporation</td>
-      <td>2011</td>
-      <td>NV</td>
-      <td>19.18</td>
-      <td>161.08</td>
-      <td>D</td>
+      <td>4</td>
+      <td>U.S. Bank National Association</td>
+      <td>CEDAR RAPIDS</td>
+      <td>IOWA</td>
+      <td>5321 COUNCIL STREET, N.E.</td>
+      <td>Cedar Rapids, IA</td>
+      <td>16300</td>
+      <td>6548</td>
+      <td>LINN</td>
+      <td>4383</td>
+      <td>CEDAR RAPIDS COUNCIL STREET BRANCH</td>
+      <td>568</td>
+      <td>09/04/2019</td>
+      <td>11</td>
+      <td>IA</td>
+      <td>19113</td>
+      <td>203680</td>
+      <td>52402</td>
     </tr>
   </tbody>
 </table>
@@ -15115,22 +17494,22 @@ dtype: object</pre>
 </div>
 </div>
 
-</div></section></section><section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Create-a-table-view">Create a table view<a class="anchor-link" href="#Create-a-table-view">&#182;</a></h2>
+<h2 id="Create-a-table-view-of-institutions">Create a table view of institutions<a class="anchor-link" href="#Create-a-table-view-of-institutions">&#182;</a></h2>
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create a table view of all bankruptcy data from 2009 to 2011</span>
 
-<span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s1">&#39;create or replace view bankruptcy_data as select * from combined_data&#39;</span><span class="p">,</span> <span class="n">con</span> <span class="o">=</span> <span class="n">engine</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s1">&#39;create or replace view banks_data as select * from institutions&#39;</span><span class="p">,</span> <span class="n">con</span> <span class="o">=</span> <span class="n">engine</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -15160,24 +17539,24 @@ dtype: object</pre>
 During handling of the above exception, another exception occurred:
 
 <span class="ansi-red-intense-fg ansi-bold">ResourceClosedError</span>                       Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-31-166977812758&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-34-5a0867efe955&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
 <span class="ansi-green-fg">      1</span> <span class="ansi-red-intense-fg ansi-bold"># Create a table view of all bankruptcy data from 2009 to 2011</span>
 <span class="ansi-green-fg">      2</span> 
-<span class="ansi-green-intense-fg ansi-bold">----&gt; 3</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>pd<span class="ansi-yellow-intense-fg ansi-bold">.</span>read_sql_query<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#39;create or replace view bankruptcy_data as select * from combined_data&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> con <span class="ansi-yellow-intense-fg ansi-bold">=</span> engine<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 3</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>pd<span class="ansi-yellow-intense-fg ansi-bold">.</span>read_sql_query<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#39;create or replace view banks_data as select * from institutions&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> con <span class="ansi-yellow-intense-fg ansi-bold">=</span> engine<span class="ansi-yellow-intense-fg ansi-bold">)</span>
 
 <span class="ansi-green-intense-fg ansi-bold">~\.conda\envs\PythonData\lib\site-packages\pandas\io\sql.py</span> in <span class="ansi-cyan-fg">read_sql_query</span><span class="ansi-blue-intense-fg ansi-bold">(sql, con, index_col, coerce_float, params, parse_dates, chunksize)</span>
-<span class="ansi-green-fg">    312</span>     return pandas_sql.read_query(
-<span class="ansi-green-fg">    313</span>         sql<span class="ansi-yellow-intense-fg ansi-bold">,</span> index_col<span class="ansi-yellow-intense-fg ansi-bold">=</span>index_col<span class="ansi-yellow-intense-fg ansi-bold">,</span> params<span class="ansi-yellow-intense-fg ansi-bold">=</span>params<span class="ansi-yellow-intense-fg ansi-bold">,</span> coerce_float<span class="ansi-yellow-intense-fg ansi-bold">=</span>coerce_float<span class="ansi-yellow-intense-fg ansi-bold">,</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 314</span><span class="ansi-yellow-intense-fg ansi-bold">         parse_dates=parse_dates, chunksize=chunksize)
-</span><span class="ansi-green-fg">    315</span> 
-<span class="ansi-green-fg">    316</span> 
+<span class="ansi-green-fg">    330</span>         coerce_float<span class="ansi-yellow-intense-fg ansi-bold">=</span>coerce_float<span class="ansi-yellow-intense-fg ansi-bold">,</span>
+<span class="ansi-green-fg">    331</span>         parse_dates<span class="ansi-yellow-intense-fg ansi-bold">=</span>parse_dates<span class="ansi-yellow-intense-fg ansi-bold">,</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 332</span><span class="ansi-yellow-intense-fg ansi-bold">         </span>chunksize<span class="ansi-yellow-intense-fg ansi-bold">=</span>chunksize<span class="ansi-yellow-intense-fg ansi-bold">,</span>
+<span class="ansi-green-fg">    333</span>     )
+<span class="ansi-green-fg">    334</span> 
 
 <span class="ansi-green-intense-fg ansi-bold">~\.conda\envs\PythonData\lib\site-packages\pandas\io\sql.py</span> in <span class="ansi-cyan-fg">read_query</span><span class="ansi-blue-intense-fg ansi-bold">(self, sql, index_col, coerce_float, parse_dates, params, chunksize)</span>
-<span class="ansi-green-fg">   1106</span>                                         parse_dates=parse_dates)
-<span class="ansi-green-fg">   1107</span>         <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 1108</span><span class="ansi-yellow-intense-fg ansi-bold">             </span>data <span class="ansi-yellow-intense-fg ansi-bold">=</span> result<span class="ansi-yellow-intense-fg ansi-bold">.</span>fetchall<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   1109</span>             frame = _wrap_result(data, columns, index_col=index_col,
-<span class="ansi-green-fg">   1110</span>                                  coerce_float<span class="ansi-yellow-intense-fg ansi-bold">=</span>coerce_float<span class="ansi-yellow-intense-fg ansi-bold">,</span>
+<span class="ansi-green-fg">   1229</span>             )
+<span class="ansi-green-fg">   1230</span>         <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-intense-fg ansi-bold">-&gt; 1231</span><span class="ansi-yellow-intense-fg ansi-bold">             </span>data <span class="ansi-yellow-intense-fg ansi-bold">=</span> result<span class="ansi-yellow-intense-fg ansi-bold">.</span>fetchall<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">   1232</span>             frame = _wrap_result(
+<span class="ansi-green-fg">   1233</span>                 data<span class="ansi-yellow-intense-fg ansi-bold">,</span>
 
 <span class="ansi-green-intense-fg ansi-bold">~\.conda\envs\PythonData\lib\site-packages\sqlalchemy\engine\result.py</span> in <span class="ansi-cyan-fg">fetchall</span><span class="ansi-blue-intense-fg ansi-bold">(self)</span>
 <span class="ansi-green-fg">   1216</span>         <span class="ansi-green-intense-fg ansi-bold">except</span> BaseException <span class="ansi-green-intense-fg ansi-bold">as</span> e<span class="ansi-yellow-intense-fg ansi-bold">:</span>
@@ -15232,148 +17611,304 @@ During handling of the above exception, another exception occurred:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Query-Table-View">Query Table View<a class="anchor-link" href="#Query-Table-View">&#182;</a></h2>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Confirm data has been added by querying the tables</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s1">&#39;select * from banks_data&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[35]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>NAME</th>
+      <th>CITY</th>
+      <th>STNAME</th>
+      <th>CERT</th>
+      <th>ADDRESS</th>
+      <th>ASSET</th>
+      <th>BKCLASS</th>
+      <th>CHANGEC1</th>
+      <th>CLCODE</th>
+      <th>COUNTY</th>
+      <th>DATEUPDT</th>
+      <th>DEP</th>
+      <th>EFFDATE</th>
+      <th>ENDEFYMD</th>
+      <th>EQ</th>
+      <th>ESTYMD</th>
+      <th>FDICDBS</th>
+      <th>FDICREGN</th>
+      <th>FDICSUPV</th>
+      <th>FED</th>
+      <th>FED_RSSD</th>
+      <th>INSDATE</th>
+      <th>ROA</th>
+      <th>ROAQ</th>
+      <th>ROE</th>
+      <th>ROEQ</th>
+      <th>RUNDATE</th>
+      <th>STALP</th>
+      <th>STCNTY</th>
+      <th>STNUM</th>
+      <th>ZIP</th>
+      <th>SUPRV_FD</th>
+      <th>OCCDIST</th>
+      <th>UNINUM</th>
+      <th>ULTCERT</th>
+      <th>TE01N528</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>The Western Saving Fund Society of Philadelphia</td>
+      <td>HAVERFORD</td>
+      <td>PENNSYLVANIA</td>
+      <td>15698</td>
+      <td>401 WEST LANCASTER AVENUE</td>
+      <td>0</td>
+      <td>SB</td>
+      <td>213</td>
+      <td>42</td>
+      <td>MONTGOMERY</td>
+      <td>04/07/1982</td>
+      <td>0</td>
+      <td>04/03/1982</td>
+      <td>04/03/1982</td>
+      <td>0</td>
+      <td>01/01/1847</td>
+      <td>2</td>
+      <td>NEW YORK</td>
+      <td>NEW YORK</td>
+      <td>3</td>
+      <td>897116</td>
+      <td>11/21/1939</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>09/04/2019</td>
+      <td>PA</td>
+      <td>42091</td>
+      <td>42</td>
+      <td>19041</td>
+      <td>2</td>
+      <td>1</td>
+      <td>9966</td>
+      <td>7946</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Bank of Summerton</td>
+      <td>SUMMERTON</td>
+      <td>SOUTH CAROLINA</td>
+      <td>15716</td>
+      <td>MAIN STREET</td>
+      <td>5045</td>
+      <td>NM</td>
+      <td>223</td>
+      <td>21</td>
+      <td>CLARENDON</td>
+      <td>10/23/1985</td>
+      <td>4412</td>
+      <td>09/16/1985</td>
+      <td>09/16/1985</td>
+      <td>585</td>
+      <td>09/11/1934</td>
+      <td>5</td>
+      <td>ATLANTA</td>
+      <td>ATLANTA</td>
+      <td>5</td>
+      <td>577221</td>
+      <td>01/15/1940</td>
+      <td>2.08</td>
+      <td>3.42</td>
+      <td>19.09</td>
+      <td>30.52</td>
+      <td>09/04/2019</td>
+      <td>SC</td>
+      <td>45027</td>
+      <td>45</td>
+      <td>29148</td>
+      <td>5</td>
+      <td>1</td>
+      <td>9979</td>
+      <td>873</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>First City, Texas - Austin, National Association</td>
+      <td>AUSTIN</td>
+      <td>TEXAS</td>
+      <td>15721</td>
+      <td>823 CONGRESS AVENUE</td>
+      <td>345518</td>
+      <td>N</td>
+      <td>211</td>
+      <td>3</td>
+      <td>TRAVIS</td>
+      <td>11/03/1992</td>
+      <td>331568</td>
+      <td>10/30/1992</td>
+      <td>10/30/1992</td>
+      <td>6972</td>
+      <td>06/05/1936</td>
+      <td>13</td>
+      <td>DALLAS</td>
+      <td>DALLAS</td>
+      <td>11</td>
+      <td>7353</td>
+      <td>02/21/1940</td>
+      <td>-2.07</td>
+      <td>-0.45</td>
+      <td>-91.84</td>
+      <td>-22.36</td>
+      <td>09/04/2019</td>
+      <td>TX</td>
+      <td>48453</td>
+      <td>48</td>
+      <td>78767</td>
+      <td>13</td>
+      <td>5</td>
+      <td>9983</td>
+      <td>5510</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>BANK IOWA</td>
+      <td>NEW HAMPTON</td>
+      <td>IOWA</td>
+      <td>15736</td>
+      <td>606 WEST MILWAUKEE</td>
+      <td>206135</td>
+      <td>SM</td>
+      <td>223</td>
+      <td>13</td>
+      <td>CHICKASAW</td>
+      <td>04/07/2011</td>
+      <td>188024</td>
+      <td>03/31/2011</td>
+      <td>03/31/2011</td>
+      <td>16414</td>
+      <td>06/16/1937</td>
+      <td>11</td>
+      <td>KANSAS CITY</td>
+      <td>KANSAS CITY</td>
+      <td>7</td>
+      <td>668848</td>
+      <td>04/15/1940</td>
+      <td>1.09</td>
+      <td>0.75</td>
+      <td>13.58</td>
+      <td>9.09</td>
+      <td>09/04/2019</td>
+      <td>IA</td>
+      <td>19037</td>
+      <td>19</td>
+      <td>50659</td>
+      <td>11</td>
+      <td>4</td>
+      <td>9992</td>
+      <td>14521</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Security State Bank</td>
+      <td>SPIRIT LAKE</td>
+      <td>IOWA</td>
+      <td>15368</td>
+      <td>1306  18TH STREET</td>
+      <td>38799</td>
+      <td>SM</td>
+      <td>223</td>
+      <td>13</td>
+      <td>DICKINSON</td>
+      <td>01/31/2003</td>
+      <td>26764</td>
+      <td>10/28/2002</td>
+      <td>10/28/2002</td>
+      <td>2615</td>
+      <td>01/01/1935</td>
+      <td>11</td>
+      <td>KANSAS CITY</td>
+      <td>KANSAS CITY</td>
+      <td>7</td>
+      <td>810142</td>
+      <td>03/24/1936</td>
+      <td>3.27</td>
+      <td>-0.05</td>
+      <td>46.44</td>
+      <td>-0.68</td>
+      <td>09/04/2019</td>
+      <td>IA</td>
+      <td>19059</td>
+      <td>19</td>
+      <td>51360</td>
+      <td>11</td>
+      <td>4</td>
+      <td>9695</td>
+      <td>15555</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Questions-??">Questions ??<a class="anchor-link" href="#Questions-??">&#182;</a></h1>
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># from pymongo import MongoClient</span>
-<span class="c1"># import sys</span>
-<span class="c1"># import json</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># # https://realpython.com/introduction-to-mongodb-and-python/</span>
-<span class="c1"># # Establish a connection</span>
-
-<span class="c1"># client = MongoClient(&#39;mongodb://localhost:27017&#39;) ## Specify the port number</span>
-
-<span class="c1"># # Create or access a database. By default if the database is not found, it will created</span>
-
-<span class="c1"># db = client.bankruptcyDB</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># # Transform all dataframe to dictionaries</span>
-
-<span class="c1"># data09_clean_dict = data09_clean.to_dict(&#39;series&#39;)</span>
-<span class="c1"># data10_clean_dict = data10_clean.to_dict(&#39;series&#39;)</span>
-<span class="c1"># data11_clean_dict = data11_clean.to_dict(&#39;series&#39;)</span>
-
-
-<span class="c1"># print(data10_clean_dict)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># combined_data_dict = combined_data.to_dict(&#39;series&#39;)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># combined_data_dict</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># # Create a collection in db (aka Table)</span>
-
-<span class="c1"># data09_collection = db.data2009.find()</span>
-<span class="c1"># data10_collection = db.data2010.find()</span>
-<span class="c1"># data11_collection = db.data2011.find()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># result10 = data10_collection.insert_one(data10_clean_dict)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># def import_content(bankruptcy_data/combined_data.csv):</span>
-<span class="c1">#     mng_client = pymongo.MongoClient(&#39;localhost&#39;, 27017)</span>
-<span class="c1">#     mng_db = mng_client[&#39;PC_Bankruptcy09_11&#39;] // Replace mongo db name</span>
-<span class="c1">#     collection_name = &#39;CombinedData&#39; // Replace mongo db collection name</span>
-<span class="c1">#     db_cm = mng_db[CombinedData]</span>
-<span class="c1">#     cdir = os.path.dirname(__file__)</span>
-<span class="c1">#     file_res = os.path.join(cdir, filepath)</span>
-
-<span class="c1">#     data = pd.read_csv(file_res)</span>
-<span class="c1">#     data_json = json.loads(data.to_json(orient=&#39;records&#39;))</span>
-<span class="c1">#     db_cm.remove()</span>
-<span class="c1">#     db_cm.insert(data_json)</span>
-
-<span class="c1"># if __name__ == &quot;__main__&quot;:</span>
-<span class="c1">#   filepath = &#39;bankruptcy_data/combined_data.csv&#39;  // pass csv file path</span>
-<span class="c1">#   import_content(filepath)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
 </div></section></section>
 </div>
 </div>
