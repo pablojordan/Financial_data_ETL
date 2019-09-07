@@ -15,7 +15,8 @@
 >* [Source 4 - Financials - IEX Trading API](https://iextrading.com/developer/)
 >* [Source 5 - Financials - Fortune 500 Table](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)
 
-> Files Navigation:
+## Files Navigation
+
 >* Jupyter Notebooks codes are found in:
 >* ETL_Financial_Institutions_Banks --> One file for Extraction, Transformation and Load
 >* ETL_Public_Companies_Bankruptcy_2009_2011 --> One file for Extraction, Transformation and Load
