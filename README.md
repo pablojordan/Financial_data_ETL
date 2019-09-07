@@ -1,16 +1,19 @@
-<a href="http://fvcproductions.com"><img src="https://avatars1.githubusercontent.com/u/4284691?v=3&s=200" title="FVCproductions" alt="FVCproductions"></a>
+		![](https://github.com/pablojordan/Financial_data_ETL/blob/master/images/etl_process.jpg)
 
-<!-- [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com) -->
 
-***INSERT GRAPHIC HERE (include hyperlink in image)***
+# ETL | Financial Services Institutions 
 
-# Repository Title Goes Here
+> The primary objective of this project is to collect data from Financial Services Institutions in the area of commercial banks and insurance. The output of the data extraction and transformation are three databases
+* Bankruptcy DB --> Active and monitored cases of public companies bankruptcy from 2009 to 2011
+* Banks DB -->  Detail on historical banks failures from 1934 to present. 
+* Financials DB --> Collections of daily stocks data for Fortune 500 companies and specifically collection of daily news, weekly historical socks data and last 4 quaters financial statement for all Fortune 500 (20 Companies) in the area of Financial Services - Insurance.
 
-> Subtitle or Short Description Goes Here
-
-> ideally one sentence
-
-> include terms/tags that can be searched
+> Sources: 
+* [Source 1 - Public Companies Bankruptcy](https://catalog.data.gov/dataset/public-company-bankruptcy-cases-opened-and-monitored)
+* [Source 2 - Banks failures 1934 to present](https://banks.data.fdic.gov/docs/#/Structure/searchInstitutions)
+* [Source 3 - Financials](https://rapidapi.com/apidojo/api/yahoo-finance1?endpoint=5c3da178e4b0cc6cdc0ed6)
+* [Source 4 - Financials](https://iextrading.com/developer/)
+* [Source 5 - Financials](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)
 
 **Badges will go here**
 
